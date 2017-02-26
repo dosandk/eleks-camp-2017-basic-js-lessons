@@ -13,6 +13,8 @@ function turnMeBaby(s) {
 
 function ucFirst(s) {
   var a = s.trim().split('');
+  if (a.length === 0)
+    return '';
   a[0] = a[0].toUpperCase();
   return a.join('');
 }

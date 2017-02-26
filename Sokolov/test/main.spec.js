@@ -9,6 +9,7 @@ describe("basic-js examples", function() {
     expect(ucFirst("john")).toBe('John');
     expect(ucFirst(" john")).toBe('John');
     expect(ucFirst("вася")).toBe("Вася");
+    expect(ucFirst("")).toBe("");
   });
 
   it("should reverse a string", function() {
