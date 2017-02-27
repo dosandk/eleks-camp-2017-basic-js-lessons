@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="file-content wiki">
+        <h4 dir="auto">
+            <a id="user-content-strings" class="anchor" href="#strings" aria-hidden="true"></a>Strings</h4>
+
+        <ol dir="auto">
+            <li>
+                <p>Написать функцию, к-я принимает первый аргумент - строку, второй вргумент - кол-во повторений. Возвращает
+                    строку в к-й содержится исходная строка заданное кол-во раз.</p>
+            </li>
+            <li>
+                <p>Напишите функцию ucFirst(str), которая возвращает строку str с заглавным первым символом, например:
+                    <code>ucFirst("вася") == "Вася";
+ucFirst("") == ""; // нет ошибок при пустой строке</code></p>
+            </li>
+            <li>
+                <p>Создайте функцию <code>truncate(str, maxlength)</code>, которая проверяет длину строки str, и если она превосходит
+                    <code>maxlength</code> – заменяет конец str на "...", так чтобы ее длина стала равна <code>maxlength</code>.</p>
+            </li>
+            <li>
+                <p>Написать функцию turnMeBaby, к-я принимает один аргумент - исходную строку и возвращает строку перевернутую
+                    задом на перед.</p>
+            </li>
+            <li>
+                <p>Реализовать функцию, которая принимает на вход строку и возвращает число слов в этой строке. Слова разделены
+                    пробелами (и, возможно, не одним), а знаки пунктуации не учитываются. Допускается только посимвольный
+                    перебор строки.</p>
+            </li>
+        </ol>
+
+        <h4 dir="auto">
+            <a id="user-content-numbers" class="anchor" href="#numbers" aria-hidden="true"></a>Numbers</h4>
+
+        <ol dir="auto">
+            <li>
+                <p>Написать функцию, к-я принимает первый аргумент - число, второй вргумент - степень. Возвращает число возведенное
+                    в заданную степень.</p>
+            </li>
+            <li>
+                <p>Написать функцию, к-я выводит в консоль/html-документ таблицу умножения.</p>
+
+                <p>1 * 1 = 1;<br> 1 * 2 = 2;<br> 1 * 3 = 3;<br> ...
+                </p>
+
+                <p>==========</p>
+
+                <p>2 * 1 = 2;<br> 2 * 2 = 4;<br> 2 * 3 = 6;<br> ...
+                </p>
+
+                <p>==========</p>
+
+                <p>3 * 1 = 3;<br> 3 * 2 = 6;<br> 3 * 3 = 9;<br> ...
+                </p>
+
+                <p>==========<br> ... </p>
+            </li>
+            <li>
+                <p>Модифицировать функцию вывода таблицы умножения таким образом, чтобы она принимала на вход два параметра:
+                    1-й число, второй - кол-во строк таблицы умножения.</p>
+
+                <p>multiTable(2, 3); </p>
+
+                <p>2 * 1 = 2;<br> 2 * 2 = 4;<br> 2 * 3 = 6; </p>
+            </li>
+            <li>
+                <p>Напишите функцию doubleNum, которая возвращает переданное ей число увеличенное вдвое, если число не состоит
+                    из "двойников" - в таком случае функция просто возвращает исходное число. "Двойники" - числа состоящие
+                    из двух одинаковых чисел, например 77, 22, 200200, 4343.</p>
+
+                <p>doubleNum(2); // 4<br> doubleNum(6); // 12<br> doubleNum(66); // 66<br> doubleNum(100100); // 100100<br>                    doubleNum(111111); // 100100 </p>
+            </li>
+        </ol>
+    </div>
+
+    <script>
+    // STRINGS
+    // 1. Copy string function
+    function copyString(string, n) {
+        return new Array(n + 1).join(string);
+    }
+    // console.log(copyString('string', 4))
+
+    function copyString2(string, n) {
+        var newString = '';
+        for (var i = 0; i < n; i++) {
+            newString += string;
+        }
+        return newString;
+    }
+    // console.log(copyString2('ostap1', 4));
+    // 2. ucFirst - first letter uppercase
+    function ucFirst(string) {
+        var newString = '';
+        if (string.length == 0) {
+            return newString;
+        } else {
+            string.split('').forEach(function(letter, index){
+                if (index != 0) {
+                    newString += letter;
+                } else {
+                    newString += letter.toUpperCase();
+                }
+            })
+            return newString;
+        }
+    }
+    // console.log(ucFirst('ostap'))
+
+    function ucFirst2(string) {
+        if (string.length == 0) {
+            return '';
+        } else {
+            return string.slice(0,1).toUpperCase() + string.slice(1);
+        }
+    }
+    // console.log(ucFirst2('ostap'))
+
+    // 3.  truncate(str, maxlength) - trim text function
+    function truncate(str, maxlength, replaceText) {
+        if (str.length > maxlength) {
+            return str.slice(0, (maxlength - replaceText.length)) + replaceText;
+        }
+    }
+    // console.log(truncate('1234567890', 8, '...'));
+
+    // 4. function turnMeBaby 
+    function turnMeBaby(string) {
+        var newString = '';
+        for (var i = 0; i < string.length; i++) {
+            newString += string[string.length - i - 1];
+        }
+        return newString;
+    }
+    // console.log(turnMeBaby('12345'))
+
+    // 5. Amount words in string
+    function amountOfWords(string) {
+        var amountOfWords = 0,
+            currentChar = '',
+            prevChar = string[0];
+        for (var i = 1; i < string.length; i++) {
+            currentChar = string[i];
+            if ((currentChar == ' ' && currentChar != prevChar) || (currentChar == string[string.length - 1] && currentChar != ' ')) {
+                amountOfWords = amountOfWords + 1;
+            }
+            prevChar = currentChar;
+        }
+        return amountOfWords;
+    }
+    // console.log(amountOfWords('   text1   text2   text3 text4  text5 '))
+
+    // NUMBERS
+    // 1. Raise number to rank
+    function numberToRank(value, rank) {
+        var sum = 1;
+        for (var i = 0; i < rank; i++) {
+            sum *= value;
+        }
+        return sum;
+    }
+    // console.log(numberToRank(2,10));
+
+    // 2. Multiplication table function
+    function multiplicationTable(num) {
+        for (var i = 1; i <= num; i++) {
+            for (var j = 1; j <= 10; j++) {
+                var expression = i + ' * ' + j + ' = ' + i*j; 
+                console.log(expression);
+            }
+        }
+    }
+    // multiplicationTable(10)
+
+    // 3. Multiplication table function - with argument for amount of lines
+    function multiplicationTable2(num, lines) {
+        for (var i = 1; i <= lines; i++) {
+            var expression = num + ' * ' + i + ' = ' + num*i; 
+            console.log(expression);
+        }
+    }
+    // multiplicationTable2(2, 3)
+
+    // 4. Function doubleNum
+    function doubleNum(num) {
+        var numString = num.toString(),
+            numLength = numString.length;
+        if (numLength%2 == 0 && (numString.slice(0, numLength / 2) == numString.slice(numLength / 2, numLength))) {
+            return num;
+        } else {
+            return num * 2;
+        }
+    }
+    // console.log(doubleNum(2424));
+
+    </script>
+
+</body>
+
+</html>
