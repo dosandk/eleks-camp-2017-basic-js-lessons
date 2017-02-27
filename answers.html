@@ -10,6 +10,30 @@
 	<script>
 
 		// Strings
+
+		// 1.
+		function repeat (str, n) {
+			var result = str;
+			for (var i = 1; i <n; i++){
+				result += str;
+			}
+			return result;
+		}
+
+		console.log(repeat("na", 5));
+
+		// 2.
+		function ucFirst (str) {
+			if (str.length == 0){
+				return str
+			} else {
+			return str.charAt(0).toUpperCase() + str.slice(1);
+			}
+		}
+
+		console.log (ucFirst("gingerbread"));
+		console.log (ucFirst(""));
+
 		// 3.
 		function truncate (str, maxlength) {
 			if (str.length <= maxlength) {
@@ -20,6 +44,19 @@
 		}
 
 		console.log(truncate("liberty", 6));
+
+		// Numbers
+		// 1. 
+		function pow (x, n) {
+			var result = x;
+			for (var i=1; i<n; i++) {
+				result *= x;
+			}
+			return result;
+		}
+
+		console.log (pow(5, 3));
+
 
 	</script>
 </body>
