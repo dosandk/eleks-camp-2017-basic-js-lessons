@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Решения задач</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<script>
+
+		// Strings
+		// 3.
+		function truncate (str, maxlength) {
+			if (str.length <= maxlength) {
+				return str;
+			} else {
+				return str.slice(0, maxlength-3) + "...";
+			}
+		}
+
+		console.log(truncate("liberty", 6));
+
+	</script>
+</body>
+</html>
