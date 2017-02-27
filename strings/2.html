@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+</head>
+
+<body>
+
+    <script>
+        //start only for first element
+        function ucFirst(a) {
+            if (a == "") {
+                alert("");
+            } else {
+                var res = a[0].toUpperCase();
+                for (var i = 1; i < a.length; i++) {
+                    res = res + a[i];
+                }
+                alert(res);
+            }
+        }
+
+
+        ucFirst("dfsgdfgsf");
+        // end only only for first element
+        function ucFirst2(a) {
+            if (a == "") {
+                alert("");
+            } else {
+                var res = "";
+                for (var i = 0; i < a.length; i++) {
+                    if (i == 0) {
+                        res = a[i].toUpperCase();
+                    } else {
+                        res = res + a[i];
+                    }
+                }
+            }
+            alert(res);
+        }
+
+        ucFirst2("dklklk");
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+</head>
+
+<body>
+
+    <script>
+        function truncate(str, maxlength) {
+            var res = "";
+            var newLength = maxlength - 3;
+            if (str.length > maxlength) {
+                for (var i = 0; i < newLength; i++) {
+                    res = res + str[i];
+                }
+                alert(res + "...");
+
+            } else {
+                alert(str);
+            }
+        }
+        truncate("qwertyuio", 6);
+    </script>
+</body>
+
+</html>
