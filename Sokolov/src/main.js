@@ -12,9 +12,16 @@ function turnMeBaby(s) {
 }
 
 function ucFirst(s) {
-  var a = s.trim().split('');
-  if (a.length === 0)
+  if (s.length === 0)
     return '';
+  s = s.trim();
+  return s[0].toUpperCase() + s.substring(1, s.length);
+}
+
+function ucFirstUsingArray(s) {
+  if (s.length === 0)
+    return '';
+  var a = s.trim().split('');
   a[0] = a[0].toUpperCase();
   return a.join('');
 }

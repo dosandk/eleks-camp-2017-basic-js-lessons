@@ -7,12 +7,17 @@ describe("basic-js tasks:", function() {
     });
   });
 
-  describe("ucFirst(str)", function() {
+  describe("ucFirst*(str)", function() {
     it("should capitalize a word", function() {
       expect(ucFirst("john")).toBe('John');
       expect(ucFirst(" john")).toBe('John');
       expect(ucFirst("вася")).toBe("Вася");
       expect(ucFirst("")).toBe("");
+
+      expect(ucFirstUsingArray("john")).toBe('John');
+      expect(ucFirstUsingArray(" john")).toBe('John');
+      expect(ucFirstUsingArray("вася")).toBe("Вася");
+      expect(ucFirstUsingArray("")).toBe("");
     });
   });
 
