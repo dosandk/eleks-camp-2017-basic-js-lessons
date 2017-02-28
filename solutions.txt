@@ -1,9 +1,17 @@
 Strings
 1.
 function repeater(x,y) {
-var str = x;
-var res = str.repeat(y);
-alert(res);
+let str = x;
+let res = str.repeat(y);
+return res;
 };
 repeater("hello",10);
+
+2. 
+function ucFirst(str)
+{
+    let a = str[0].toUpperCase() + str.slice(1);
+    return a;
+}
+ucFirst("ivan");
 
