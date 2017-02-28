@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JS Constructions</title>
+</head>
+
+<body>
+    <script>
+        // 1. ImmutableArray
+        let initArray = [1, 2, 3];
+        let ImmutableArray = {
+            push(arr, el) {
+                return [].concat(arr.slice(), el);
+            },
+            pop(arr) {
+                let arrCopy = arr.slice()
+                arrCopy.length = arr.length - 1;
+                return arrCopy;
+            },
+            shift(arr) {
+                return arr.slice(1);
+            },
+            unshift(arr, el) {
+                let arrCopy = [];
+                arrCopy[0] = el;
+                return arrCopy.concat(arr.slice(1));
+            },
+            remove(arr, index) {
+                return arr.slice(0, index).concat(arr.slice(index + 1))
+            },
+            insert(arr, el, index) {
+                return arr.slice(0, index).concat(el, arr.slice(index))
+            },
+            swapElements(arr, direction, index) {
+                let arrayCopy = arr.slice(),
+                    currentEl = arr[index],
+                    prevEl = arr[index - 1],
+                    nextEl = arr[index + 1];
+
+                if (direction == 'prev') {
+                    arrayCopy[index] = prevEl;
+                    arrayCopy[index - 1] = currentEl;
+                } else if (direction == 'next') {
+                    arrayCopy[index] = nextEl;
+                    arrayCopy[index + 1] = currentEl;
+                }
+                return arrayCopy;
+            },
+            swapWithPrevious(arr, index) {
+                return this.swapElements(arr, 'prev', index);
+            },
+            swapWithNext(arr, index) {
+                return this.swapElements(arr, 'next', index);
+            },
+
+        }
+
+        console.log('push', ImmutableArray.push(initArray, 55))
+        console.log('pop', ImmutableArray.pop(initArray))
+        console.log('shift', ImmutableArray.shift(initArray))
+        console.log('unshift', ImmutableArray.unshift(initArray, 10))
+        console.log('remove', ImmutableArray.remove(initArray, 1))
+        console.log('insert', ImmutableArray.insert(initArray, 100, 1))
+        console.log('swapWithPrevious', ImmutableArray.swapWithPrevious(initArray, 1))
+        console.log('swapWithNext', ImmutableArray.swapWithNext(initArray, 1))
+        console.log('initArray', initArray)
+    </script>
+</body>
+
+</html>
