@@ -64,7 +64,7 @@ function countWords(str) {
     }
     return wordCounter;
 }
-//console.log(countWords('Angel waterfall highest waterfall in the world')); 
+//console.log(countWords('Angel waterfall highest waterfall in the world.')); 
 
 //NUMBERS
 //task-1
