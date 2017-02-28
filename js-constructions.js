@@ -4,18 +4,62 @@ let arr1 = [2, 3, 5, 2, 1, 5],
 // task-1
 let ImmutableArray = {
     push: function(arr, el){
-        let newArray = [];
-        arr.forEach(x => newArray.push(x));
-        newArray.push(el);
-        return newArray;
+        let tempArray = arr.map(x => x);
+        tempArray.push(el);
+        return tempArray;
     },
     pop: function(arr){
-        let newArray = [];
-        arr.forEach(x => newArray.push(x));
-        newArray.pop();
-        return newArray;
+        let tempArray = arr.map(x => x);
+        tempArray.pop();
+        return tempArray;
+    },
+    // what does this function need to return array or element?
+    shift: function(arr) {
+        let tempArray = arr.map(x => x);
+        tempArray.shift();
+        return tempArray;
+    },
+    unshift: function(arr, el) {
+        let tempArray = arr.map(x => x);
+        tempArray.unshift(el);
+        return tempArray;
+    },
+    remove: function(arr, index) {
+        let tempArray = arr.map(x => x);
+        tempArray.splice(index, 1);
+        return tempArray;
+    },
+    insert: function(arr, el, index) {
+        let tempArray = arr.map(x => x);
+        tempArray.splice(index, 0, el);
+        return tempArray;
+    },
+    swapWithPrevious: function(arr, index) {
+        let tempVar;
+        let tempArray = arr.map(x => x);
+        tempVar = tempArray[index];
+        tempArray[index] = tempArray[index - 1];
+        tempArray[index - 1] = tempVar;
+        return tempArray;
+    },
+    swapWithNext: function(arr, index) {
+        let tempVar;
+        let tempArray = arr.map(x => x);
+        tempVar = tempArray[index];
+        tempArray[index] = tempArray[index + 1];
+        tempArray[index + 1] = tempVar;
+        return tempArray;
     }
 }
+//console.log(ImmutableArray.push(arr1, 's'));
+//console.log(ImmutableArray.pop(arr1));
+//console.log(ImmutableArray.shift(arr1));
+//console.log(ImmutableArray.unshift(arr1, 1));
+//console.log(ImmutableArray.remove(arr1, 2));
+//console.log(ImmutableArray.insert(arr1, 9, 3));
+//console.log(ImmutableArray.swapWithPrevious(arr1, 3));
+console.log(ImmutableArray.swapWithNext(arr1, 3));
+console.log(arr1);
 
 // task 2, intersection of arrays
 function intersection(arr1, arr2) {
