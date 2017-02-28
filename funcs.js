@@ -1,28 +1,44 @@
-function repeat(str, times) {
+function fail(thing) {
+  throw new Error(thing);
+}
+
+function repeat(str, count) {
+  if (typeof str !== 'string') {
+    fail("type of str should be 'string'");
+  }
+  if (!Number.isInteger(count)) {
+    fail('count should be integer');
+  }
+  if (count < 0) {
+    fail('count should be positive');
+  }
+
   var result = '';
-  for (var i = 0; i < times; i++) {
+  for (var i = 0; i < count; i++) {
     result += str;
   }
   return result;
 }
 
 function ucFirst(str) {
-  return str[0].toUpperCase() + str.substring(1);
+  if (typeof str !== 'string') {
+    fail("type of str should be 'string'");
+  }
+  return str.length > 0 ? str[0].toUpperCase() + str.substring(1) : '';
 }
 
-function truncate(str, maxlength) {
+function truncate(str, maxlength, replace="...") {
+  if (typeof str !== 'string') {
+    fail("type of str should be 'string'");
+  }
+  if (!Number.isInteger(maxlength)) {
+    fail("maxlength should be 'integer'");
+  }
+  if (maxlength < 0) {
+    fail('maxlength should be positive');
+  }
   if (str.length > maxlength) {
-
+    return str.substring(0, maxlength - replace.length) + replace;
   }
-
+  return str;
 }
-
-function turnMeBaby(str) {
-  var reversed = "";
-  for (var i = str.length-1; i >= 0; i--) {
-    reversed += str[i];
-  }
-  return reversed;
-}
-
-console.log(ucFirst('hi'));
