@@ -103,6 +103,22 @@
         }
         // console.log('2. intersection(arr1, arr2)')
         // console.log('intersection', intersection([2, 1, 3, 1], [1, 3, 5]))
+
+        // 4. toEvenOddString([1, 3, 2, 8, 13, 7, 4])
+        function toEvenOddString(arr) {
+            let evenArr = [],
+                oddArr = [];
+            arr.forEach(function (elem) {
+                if (elem % 2) {
+                    oddArr.push(elem)
+                } else {
+                    evenArr.push(elem)
+                }
+            })
+            return evenArr.sort(function (a, b) { return a - b }).join('') + oddArr.sort(function (a, b) { return b - a }).join('');
+        }
+        // console.log('4. toEvenOddString([1, 3, 2, 8, 13, 7, 4])')
+        // console.log('result', toEvenOddString([1, 3, 2, 8, 13, 7, 4]))
     </script>
 </body>
 
