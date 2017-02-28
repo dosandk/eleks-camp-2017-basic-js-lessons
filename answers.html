@@ -24,11 +24,7 @@
 
 		// 2.
 		function ucFirst (str) {
-			if (str.length == 0){
-				return str
-			} else {
 			return str.charAt(0).toUpperCase() + str.slice(1);
-			}
 		}
 
 		console.log (ucFirst("gingerbread"));
@@ -45,6 +41,31 @@
 
 		console.log(truncate("liberty", 6));
 
+		// 4.
+		function turnMeBaby (str) {
+			var reverseStr = "";
+			for (var i = str.length-1; i>=0; i--){
+				reverseStr += str[i];
+			}
+			return reverseStr;
+		}
+
+		console.log(turnMeBaby("gingerbread"));
+
+		// 5. 
+		function countWords(str) {
+			var newStr = "";
+			for (var i = 0; i < str.length; i++) {
+				if (str[i] == " " &&
+					str[i+1] == " ") continue;
+					newStr += str[i];
+			}
+			var words = newStr.split(" ")
+			return words.length;
+		}
+
+		console.log(countWords("world  is   my home"));
+
 		// Numbers
 		// 1. 
 		function pow (x, n) {
@@ -57,6 +78,41 @@
 
 		console.log (pow(5, 3));
 
+		// 2.
+		function showMultiplyTable(){
+			for (var i = 1; i < 10; i++){
+				for (var j = 1; j <= 10; j++){
+					document.write(i + " * " + j + " = " + i*j + "<br>")
+				}
+				document.write("<br>");
+			}
+		}
+		showMultiplyTable();
+
+		// 3.
+
+		function multiTable(n, r){
+			for (var i = 1; i <= r; i++){
+				console.log(n +" * " + i + " = " + n*i);
+			}
+		}
+
+		multiTable(5, 5);
+
+		// 4.
+		function doubleNum (n) {
+			var str = "" + n;
+
+			if (str.slice(0, str.length/2) == str.slice(str.length/2)) {
+				return n;
+			} else {
+				return n*2;
+			}
+		}
+
+		console.log(doubleNum(567));
+		console.log(doubleNum(5658));
+		console.log(doubleNum(5656));
 
 	</script>
 </body>
