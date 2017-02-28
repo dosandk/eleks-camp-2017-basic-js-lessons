@@ -77,7 +77,6 @@ function toPow(n, m) {
 }
 //console.log(toPow(2, 8)); // task-1 numbers
 
-
 //task-2 
 function multiplicationTable() {
     for(i = 1; i <= 9; i++) {
@@ -115,5 +114,4 @@ function doubleNum(number) {
        return number * 2;
    }
 }
-
-//console.log(doubleNum(66));// task-4 numbers
+//console.log(doubleNum(66));
