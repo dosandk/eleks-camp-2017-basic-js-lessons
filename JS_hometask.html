@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+	//1. 
+        function f(str, n){
+            for(var i = 0; i < n; i++){
+                document.write(str + "<br>");
+            }
+        }
+  
+  
+	//2. 
+        function ucFirst(str){
+			if(str != ""){
+				var str1 = str[0].toUpperCase();
+				for(var i = 1; i < str.length; i++){
+					str1 = str1 + str[i].toLowerCase();
+				}
+				document.write(str1);
+			}	
+        }
+  
+  
+	//3. 
+        function truncate(str, maxlength){
+			var str1 = "";
+			if(str.length > maxlength){
+				for(var i = 0; i < maxlength - 3; i++){
+					str1 = str1 + str[i];
+				}
+				document.write(str1 + "...");
+			}
+		else document.write(str);		
+        }
+   
+
+   //4. 
+        function turnMeBaby(str){
+			var str1 = "";
+				for(var i = str.length - 1; i >= 0; i--){
+					str1 = str1 + str[i];
+				}
+				document.write(str1);	
+        }
+   
+   
+	//5. 
+		var count = 0;
+        function f(str){
+			str = str + " ";
+			for(var i = 0; i < str.length; i++){
+				if((str[i] != " ")&&(str[i + 1] == " ")){
+					count = count + 1;
+				}
+			}
+			document.write(count);	
+        }
+   
+   
+   
+	//6.
+		function power(a, pow){
+			var p = 1;
+			if(pow < 0){
+				a = 1/a;
+				pow = -pow;
+			}
+			for(var i = 0; i < pow; i++){
+				p = p * a;
+			}
+			document.write(p);
+		}
+	
+	
+	//7.
+		function multiplicationTable(){
+			for(i = 1; i <= 9; i++){
+				for(j = 1; j <= 10; j++){
+					document.write(i + "*" + j + "=" + i * j + "<br>");
+				}
+			document.write("======<br>");	
+			}
+		}
+	
+	
+	
+	//8.
+		function multiply(a, b){
+			for(i = 1; i <= b; i++){
+					document.write(a + "*" + i + "=" + a * i + "<br>");	
+			}
+		}
+	
+	
+	
+	//9.
+		function doubleNum(a){
+			a = a.toString();
+			for(i = 0; i < a.length/2; i++){
+				if(a[i] != a[a.length/2 + i]){
+					a = a * 2;
+					break	
+				}
+			}
+			return a;
+		}
+	</script>
+	
+</body>
+</html>
