@@ -15,3 +15,17 @@ function ucFirst(str)
 }
 ucFirst("ivan");
 
+3.
+function truncate(str, maxlength) {
+let s = str; 
+let len = maxlength;
+if (s.length > len) {
+let cutString = s.substring(0, len);
+let res = cutString + "...";
+return res;
+}
+else {
+return s;
+}
+}
+truncate("long word",6);
