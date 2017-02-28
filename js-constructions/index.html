@@ -9,7 +9,7 @@
 <body>
     <script>
         // 1. ImmutableArray
-        let initArray = [1, 2, 3];
+        let initArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
         let ImmutableArray = {
             push(arr, el) {
                 return [].concat(arr.slice(), el);
@@ -34,17 +34,39 @@
                 return arr.slice(0, index).concat(el, arr.slice(index))
             },
             swapElements(arr, direction, index) {
-                let arrayCopy = arr.slice(),
-                    currentEl = arr[index],
-                    prevEl = arr[index - 1],
-                    nextEl = arr[index + 1];
+                function ckeckSwapDirection(curInd, prevInd, nextInd, curElem, prevElem, nextElem) {
+                    if (direction == 'prev') {
+                        arrayCopy[curInd] = prevElem;
+                        arrayCopy[prevInd] = curElem;
+                    } else if (direction == 'next') {
+                        arrayCopy[curInd] = nextElem;
+                        arrayCopy[nextInd] = curElem;
+                    }
+                }
 
-                if (direction == 'prev') {
-                    arrayCopy[index] = prevEl;
-                    arrayCopy[index - 1] = currentEl;
-                } else if (direction == 'next') {
-                    arrayCopy[index] = nextEl;
-                    arrayCopy[index + 1] = currentEl;
+                let arrayCopy = arr.slice(),
+                    amountOfElems = arr.length,
+                    currentEl,
+                    prevEl,
+                    nextEl;
+
+                if (index > amountOfElems - 1) {
+                    index = amountOfElems - 1;
+                    currentEl = arr[index];
+                    prevEl = arr[index - 1];
+                    nextEl = arr[0];
+                    ckeckSwapDirection(index, index - 1, 0, currentEl, prevEl, nextEl)
+                } else if (index <= 0) {
+                    index = 0;
+                    currentEl = arr[index];
+                    prevEl = arr[amountOfElems - 1];
+                    nextEl = arr[index + 1];
+                    ckeckSwapDirection(index, amountOfElems - 1, index + 1, currentEl, prevEl, nextEl)
+                } else {
+                    currentEl = arr[index];
+                    prevEl = arr[index - 1];
+                    nextEl = arr[index + 1];
+                    ckeckSwapDirection(index, index - 1, index + 1, currentEl, prevEl, nextEl)
                 }
                 return arrayCopy;
             },
@@ -56,15 +78,15 @@
             },
 
         }
-
+        console.log('1. ImmutableArray')
         console.log('push', ImmutableArray.push(initArray, 55))
         console.log('pop', ImmutableArray.pop(initArray))
         console.log('shift', ImmutableArray.shift(initArray))
         console.log('unshift', ImmutableArray.unshift(initArray, 10))
         console.log('remove', ImmutableArray.remove(initArray, 1))
         console.log('insert', ImmutableArray.insert(initArray, 100, 1))
-        console.log('swapWithPrevious', ImmutableArray.swapWithPrevious(initArray, 1))
-        console.log('swapWithNext', ImmutableArray.swapWithNext(initArray, 1))
+        console.log('swapWithPrevious', ImmutableArray.swapWithPrevious(initArray, 10))
+        console.log('swapWithNext', ImmutableArray.swapWithNext(initArray, 10))
         console.log('initArray', initArray)
     </script>
 </body>
