@@ -1,0 +1,9 @@
+Strings
+1.
+function repeater(x,y) {
+var str = x;
+var res = str.repeat(y);
+alert(res);
+};
+repeater("hello",10);
+
