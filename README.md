@@ -67,4 +67,4 @@ ucFirst("") == ""; // нет ошибок при пустой строке`
     doubleNum(6); // 12  
     doubleNum(66); // 66  
     doubleNum(100100); // 100100  
-    doubleNum(111111); // 100100  
+    doubleNum(111111); // 111111 
