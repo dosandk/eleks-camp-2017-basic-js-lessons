@@ -3,12 +3,10 @@ let arr1 = [2, 3, 5, 2, 1, 5],
 
 // task-1
 let ImmutableArray = {
-    push: function(arr, el){
-        let tempArray = arr.map(x => x);
-        tempArray.push(el);
-        return tempArray;
+    push: function(arr, el) {
+        return arr.concat(el);
     },
-    pop: function(arr){
+    pop: function(arr) {
         let tempArray = arr.map(x => x);
         tempArray.pop();
         return tempArray;
@@ -20,9 +18,7 @@ let ImmutableArray = {
         return tempArray;
     },
     unshift: function(arr, el) {
-        let tempArray = arr.map(x => x);
-        tempArray.unshift(el);
-        return tempArray;
+        return [el].concat(arr);
     },
     remove: function(arr, index) {
         let tempArray = arr.map(x => x);
@@ -35,19 +31,22 @@ let ImmutableArray = {
         return tempArray;
     },
     swapWithPrevious: function(arr, index) {
-        let tempVar;
-        let tempArray = arr.map(x => x);
-        tempVar = tempArray[index];
-        tempArray[index] = tempArray[index - 1];
-        tempArray[index - 1] = tempVar;
-        return tempArray;
+        return this.swapMain(arr, index, '-');
     },
     swapWithNext: function(arr, index) {
+        return this.swapMain(arr, index, '+');
+    },
+    swapMain: function(arr, index, sign) {
         let tempVar;
         let tempArray = arr.map(x => x);
         tempVar = tempArray[index];
-        tempArray[index] = tempArray[index + 1];
-        tempArray[index + 1] = tempVar;
+        if(sign == '+') {
+            tempArray[index] = tempArray[index + 1];
+            tempArray[index + 1] = tempVar;
+        } else {
+            tempArray[index] = tempArray[index - 1];
+            tempArray[index - 1] = tempVar;
+        }    
         return tempArray;
     }
 }
@@ -58,8 +57,8 @@ let ImmutableArray = {
 //console.log(ImmutableArray.remove(arr1, 2));
 //console.log(ImmutableArray.insert(arr1, 9, 3));
 //console.log(ImmutableArray.swapWithPrevious(arr1, 3));
-console.log(ImmutableArray.swapWithNext(arr1, 3));
-console.log(arr1);
+//console.log(ImmutableArray.swapWithNext(arr1, 3));
+//console.log(arr1);
 
 // task 2, intersection of arrays
 function intersection(arr1, arr2) {
@@ -103,3 +102,54 @@ function toEvenOddString(arr) {
     return even.concat(odd).join('');
 }
 //console.log(toEvenOddString([1, 3, 2, 8, 13, 7, 4]));
+
+// task 6
+let monday = [
+    {
+        'name'  : 'Write a tutorial',
+        'duration' : 180
+    },
+    {
+        'name'  : 'Some web development',
+        'duration' : 120
+    }
+];
+let tuesday = [
+    {
+        'name'  : 'Keep writing that tutorial',
+        'duration' : 240
+    },
+    {
+        'name'  : 'Some more web development',
+        'duration' : 180
+    },
+    {
+        'name'  : 'A whole lot of nothing',
+        'duration'  : 240
+    }
+];
+
+// TASK 6 SOLUTION
+let tasks = [monday, tuesday];
+let amount = 0,
+    taxRate = 15;
+
+// step-1 concat two arrays, is it ok to code in this style?
+tasks.reduce((current, next) =>  current.concat(next))
+// step 2, converting mins to hours
+.map(el => {
+    el.duration = el.duration / 60;
+    return el;
+})
+// step 3, show tasks with duration > 2
+.filter(el => el.duration > 2)
+// step 4-5, multiplying duration on hour rate,
+// accumulating total amount
+.map(el => {
+    el.duration = el.duration * taxRate;
+    amount += el.duration;
+    return el;
+});
+// formating total amount
+amount = '$' + amount;             
+console.log(amount); // => $210
