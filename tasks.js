@@ -94,7 +94,7 @@ multiTable(7,5);
 
 // 4.
 function doubleNum(number) {
-	if (number.toString().length%2 == 0) {
+	if (number.toString().length%2 === 0) {
 		var splited = (number+'').split('');
 		var first = +splited.slice(0, splited.length/2).join('');
 		var second = +splited.slice(splited.length/2).join('');
@@ -109,3 +109,14 @@ console.log('Numbers Task4:');
 console.log(doubleNum(5));
 console.log(doubleNum(77));
 console.log(doubleNum(373373));
+
+function dragonCurve(iteration) {
+    var right = '1';
+    var result = '';
+    
+    for(var i = 0; i < iteration; i++) {
+    	result = result + right + result.split('').reverse().map(el=>+!(parseInt(el))).join(''); 
+    }
+
+    console.log(result);
+}
