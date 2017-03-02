@@ -37,11 +37,23 @@
                     resArr[i] = arr[i + 1];
                 }
                 return resArr;
+            },
+            //unshift
+            myUnshift: function myUnshift(arr, el) {
+                var resArr = [];
+                for (var i = 0; i < arr.length; i++) {
+                    if (i == 0) {
+                        resArr[i] = el;
+                    } else {
+                        resArr[i] = arr[i];
+                    }
+                }
+                return resArr;
             }
         };
-        var arr1 = [1, 2, 3, 4];
-        alert(ImmutableArray.myShift(arr1));
-        alert(arr1);
+        //var arr1 = [1, 2, 3, 4];
+        //alert(ImmutableArray.myUnshift(arr1, 5));
+        //alert(arr1);
     </script>
 </body>
 
