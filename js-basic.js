@@ -2,11 +2,11 @@
 
 // task-1 
 function multipleStings(str, n) {
-    var strCopy = str;
-    for(i = 1; i < n; i++){
-        str += strCopy;
+    var strCopy = '';
+    for(i = 1; i <= n; i++){
+        strCopy += str;
     }
-    return str;
+    return strCopy;
 }
 //console.log(multipleStings('f1', 4));   
 
