@@ -103,6 +103,45 @@ function toEvenOddString(arr) {
 }
 //console.log(toEvenOddString([1, 3, 2, 8, 13, 7, 4]));
 
+// task 5, snail
+let matrix = [[1, 2, 3, 4, 5], [6, 7, 8, 9, 10], [11, 12, 13, 14, 15], [16, 17, 18, 19, 20], [21, 22, 23, 24, 25]];
+function rotate(arr) {
+    let tempArr = [];
+    arr.forEach(arrEl => {
+        arrEl.forEach(el => {
+            if(tempArr.length -1 < arrEl.indexOf(el)){
+                /* if array with element index is not found in tempArr,
+                unshift array with element to tempArr.*/
+                tempArr.unshift([el]);
+            } else if (arrEl.indexOf(el) == 0){
+               tempArr[tempArr.length -1].push(el);
+            } else if (arrEl.indexOf(el) == tempArr.length -1){
+                 tempArr[0].push(el);
+            } else if (arrEl.indexOf(el) == arrEl.length - 2){
+                 tempArr[1].push(el);
+            }
+             else {
+                tempArr[arrEl.indexOf(el) + 1].push(el);
+            }
+        });
+    });
+    return tempArr;
+}
+
+function snail(arr, n) {
+    let unpackedMatrix = [];
+    for( i = 0; i <= n; i++) {
+        arr[0].forEach(inner => {
+            unpackedMatrix.push(inner);
+        });
+        arr.splice(0, 1);
+        arr = rotate(arr);
+    }
+    return unpackedMatrix;
+}
+
+console.log(snail(matrix, 8));
+
 // task 6
 let monday = [
     {
@@ -152,4 +191,4 @@ tasks.reduce((current, next) =>  current.concat(next))
 });
 // formating total amount
 amount = '$' + amount;             
-console.log(amount); // => $210
+//console.log(amount); // => $210
