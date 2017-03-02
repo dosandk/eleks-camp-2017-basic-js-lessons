@@ -61,10 +61,19 @@
                     }
                 }
                 return resArr;
+            },
+            //insert
+            myInsert: function myInsert(arr, el, index) {
+                var resArr = [];
+                for (var i = 0; i <= arr.length; i++) {
+                    resArr.push(arr[i]);
+                }
+                resArr.splice(index, 0, el);
+                return resArr;
             }
         };
         var arr1 = [1, 2, 3, 4];
-        alert(ImmutableArray.myRemove(arr1, 1));
+        alert(ImmutableArray.myInsert(arr1, 7, 1));
         alert(arr1);
     </script>
 </body>
