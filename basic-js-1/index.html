@@ -81,124 +81,152 @@ ucFirst("") == ""; // нет ошибок при пустой строке</code
     </div>
 
     <script>
-    // STRINGS
-    // 1. Copy string function
-    function copyString(string, n) {
-        return new Array(n + 1).join(string);
-    }
-    // console.log(copyString('string', 4))
-
-    function copyString2(string, n) {
-        var newString = '';
-        for (var i = 0; i < n; i++) {
-            newString += string;
+        // STRINGS
+        // 1. Copy string function
+        function copyString(string, n) {
+            return new Array(n + 1).join(string);
         }
-        return newString;
-    }
-    // console.log(copyString2('ostap1', 4));
-    // 2. ucFirst - first letter uppercase
-    function ucFirst(string) {
-        var newString = '';
-        if (string.length == 0) {
-            return newString;
-        } else {
-            string.split('').forEach(function(letter, index){
-                if (index != 0) {
-                    newString += letter;
-                } else {
-                    newString += letter.toUpperCase();
-                }
-            })
-            return newString;
-        }
-    }
-    // console.log(ucFirst('ostap'))
+        // console.log(copyString('string', 4))
 
-    function ucFirst2(string) {
-        if (string.length == 0) {
-            return '';
-        } else {
-            return string.slice(0,1).toUpperCase() + string.slice(1);
-        }
-    }
-    // console.log(ucFirst2('ostap'))
-
-    // 3.  truncate(str, maxlength) - trim text function
-    function truncate(str, maxlength, replaceText) {
-        if (str.length > maxlength) {
-            return str.slice(0, (maxlength - replaceText.length)) + replaceText;
-        }
-    }
-    // console.log(truncate('1234567890', 8, '...'));
-
-    // 4. function turnMeBaby 
-    function turnMeBaby(string) {
-        var newString = '';
-        for (var i = 0; i < string.length; i++) {
-            newString += string[string.length - i - 1];
-        }
-        return newString;
-    }
-    // console.log(turnMeBaby('12345'))
-
-    // 5. Amount words in string
-    function amountOfWords(string) {
-        var amountOfWords = 0,
-            currentChar = '',
-            prevChar = string[0];
-        for (var i = 1; i < string.length; i++) {
-            currentChar = string[i];
-            if ((currentChar == ' ' && currentChar != prevChar) || (currentChar == string[string.length - 1] && currentChar != ' ')) {
-                amountOfWords = amountOfWords + 1;
+        function copyString2(string, n) {
+            var newString = '';
+            for (var i = 0; i < n; i++) {
+                newString += string;
             }
-            prevChar = currentChar;
+            return newString;
         }
-        return amountOfWords;
-    }
-    // console.log(amountOfWords('   text1   text2   text3 text4  text5 '))
-
-    // NUMBERS
-    // 1. Raise number to rank
-    function numberToRank(value, rank) {
-        var sum = 1;
-        for (var i = 0; i < rank; i++) {
-            sum *= value;
+        // console.log(copyString2('ostap1', 4));
+        // 2. ucFirst - first letter uppercase
+        function ucFirst(string) {
+            var newString = '';
+            if (string.length == 0) {
+                return newString;
+            } else {
+                string.split('').forEach(function (letter, index) {
+                    if (index != 0) {
+                        newString += letter;
+                    } else {
+                        newString += letter.toUpperCase();
+                    }
+                })
+                return newString;
+            }
         }
-        return sum;
-    }
-    // console.log(numberToRank(2,10));
+        // console.log(ucFirst('ostap'))
 
-    // 2. Multiplication table function
-    function multiplicationTable(num) {
-        for (var i = 1; i <= num; i++) {
-            for (var j = 1; j <= 10; j++) {
-                var expression = i + ' * ' + j + ' = ' + i*j; 
+        function ucFirst2(string) {
+            if (string.length == 0) {
+                return '';
+            } else {
+                return string.slice(0, 1).toUpperCase() + string.slice(1);
+            }
+        }
+        // console.log(ucFirst2('ostap'))
+
+        // 3.  truncate(str, maxlength) - trim text function
+        function truncate(str, maxlength, replaceText) {
+            if (str.length > maxlength) {
+                return str.slice(0, (maxlength - replaceText.length)) + replaceText;
+            }
+        }
+        // console.log(truncate('1234567890', 8, '...'));
+
+        // 4. function turnMeBaby 
+        function turnMeBaby(string) {
+            var newString = '';
+            for (var i = 0; i < string.length; i++) {
+                newString += string[string.length - i - 1];
+            }
+            return newString;
+        }
+        // console.log(turnMeBaby('12345'))
+
+        // 5. Amount words in string
+        function amountOfWords(string) {
+            var amountOfWords = 0,
+                currentChar = '',
+                prevChar = string[0];
+            for (var i = 1; i < string.length; i++) {
+                currentChar = string[i];
+                if ((currentChar == ' ' && currentChar != prevChar) || (currentChar == string[string.length - 1] && currentChar != ' ')) {
+                    amountOfWords = amountOfWords + 1;
+                }
+                prevChar = currentChar;
+            }
+            return amountOfWords;
+        }
+        // console.log(amountOfWords('   text1   text2   text3 text4  text5 '))
+
+        // NUMBERS
+        // 1. Raise number to rank
+        function numberToRank(value, rank) {
+            var sum = 1;
+            for (var i = 0; i < rank; i++) {
+                sum *= value;
+            }
+            return sum;
+        }
+        // console.log(numberToRank(2,10));
+
+        // 2. Multiplication table function
+        function multiplicationTable(num) {
+            for (var i = 1; i <= num; i++) {
+                for (var j = 1; j <= 10; j++) {
+                    var expression = i + ' * ' + j + ' = ' + i * j;
+                    console.log(expression);
+                }
+            }
+        }
+        // multiplicationTable(10)
+
+        // 3. Multiplication table function - with argument for amount of lines
+        function multiplicationTable2(num, lines) {
+            for (var i = 1; i <= lines; i++) {
+                var expression = num + ' * ' + i + ' = ' + num * i;
                 console.log(expression);
             }
         }
-    }
-    // multiplicationTable(10)
+        // multiplicationTable2(2, 3)
 
-    // 3. Multiplication table function - with argument for amount of lines
-    function multiplicationTable2(num, lines) {
-        for (var i = 1; i <= lines; i++) {
-            var expression = num + ' * ' + i + ' = ' + num*i; 
-            console.log(expression);
+        // 4. Function doubleNum
+        function doubleNum(num) {
+            var numString = num.toString(),
+                numLength = numString.length;
+            if (numLength % 2 == 0 && (numString.slice(0, numLength / 2) == numString.slice(numLength / 2, numLength))) {
+                return num;
+            } else {
+                return num * 2;
+            }
         }
-    }
-    // multiplicationTable2(2, 3)
+        // console.log(doubleNum(2424));
 
-    // 4. Function doubleNum
-    function doubleNum(num) {
-        var numString = num.toString(),
-            numLength = numString.length;
-        if (numLength%2 == 0 && (numString.slice(0, numLength / 2) == numString.slice(numLength / 2, numLength))) {
-            return num;
-        } else {
-            return num * 2;
+
+        // 01-03-2017 Dragon curve
+        function dragonCurve(n) {
+            let result = [];
+
+            for (let i = 1; i < n; i++) {
+                let r = Math.pow(2, (i)) - 1,
+                    newArray = new Array(r),
+                    centralValueIndex = (r - 1) / 2;
+
+                newArray[centralValueIndex] = 1;
+                result = result.concat(newArray.slice(centralValueIndex))
+
+                for (let i = 0; i < (result.length - 1) / 2; i++) {
+                    result[result.length - i - 1] = -result[i];
+                }
+            }
+            return result.map(el => {
+                if (el === -1) {
+                    return 0;
+                } else {
+                    return el;
+                }
+            }).join('')
         }
-    }
-    // console.log(doubleNum(2424));
+
+        // console.log(dragonCurve(5))
 
     </script>
 
