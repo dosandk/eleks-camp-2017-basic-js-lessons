@@ -4,8 +4,13 @@
 </head>
 
 <body>
+    <!-- Створити об’єкт ImmutableArray який міститиме функції для роботи з
 
+масивами, що не мутують переданий на вхід масив (повертають новий
+
+змінений) -->
     <script>
+        //push
         var ImmutableArray = {
             myPush: function myPush(arr, el) {
                 var resArr = [];
@@ -17,17 +22,26 @@
                 }
                 return resArr;
             },
+            //pop
             myPop: function myPop(arr) {
                 var resArr = [];
                 for (var i = 0; i < arr.length - 1; i++) {
                     resArr[i] = arr[i];
                 }
                 return resArr;
+            },
+            //shift
+            myShift: function myShift(arr) {
+                var resArr = [];
+                for (var i = 0; i < arr.length; i++) {
+                    resArr[i] = arr[i + 1];
+                }
+                return resArr;
             }
         };
         var arr1 = [1, 2, 3, 4];
-        //alert(ImmutableArray.myPush(arr1, 5));
-        //alert(arr1);
+        alert(ImmutableArray.myShift(arr1));
+        alert(arr1);
     </script>
 </body>
 
