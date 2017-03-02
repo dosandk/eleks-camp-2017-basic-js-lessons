@@ -71,6 +71,7 @@
                 resArr.splice(index, 0, el);
                 return resArr;
             },
+            //swapWithPrevious
             swapWithPrevious: function swapWithPrevious(arr, index) {
                 var resArr = [];
                 var prevEl;
@@ -86,11 +87,28 @@
                     }
                 }
                 return resArr;
+            },
+            //swapWithNext
+            swapWithNext: function swapWithNext(arr, index) {
+                var resArr = [];
+                var nextEl;
+                for (var i = 0; i < arr.length; i++) {
+                    if (index == arr.length) {
+                        resArr.push(arr[i]);
+                    } else if (i == index) {
+                        nextEl = arr[index + 1];
+                        resArr[index + 1] = arr[index];
+                        resArr[index] = nextEl;
+                    } else if (i !== index + 1) {
+                        resArr.push(arr[i]);
+                    }
+                }
+                return resArr;
             }
         };
-        //var arr1 = [1, 2, 3, 4];
-        //alert(ImmutableArray.swapWithPrevious(arr1, 1));
-        //alert(arr1);
+        var arr1 = [1, 2, 3, 4];
+        alert(ImmutableArray.swapWithNext(arr1, 1));
+        alert(arr1);
     </script>
 </body>
 
