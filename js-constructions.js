@@ -104,7 +104,7 @@ function toEvenOddString(arr) {
 //console.log(toEvenOddString([1, 3, 2, 8, 13, 7, 4]));
 
 // task 5, snail
-let matrix = [[1, 2, 3, 4, 5], [6, 7, 8, 9, 10], [11, 12, 13, 14, 15], [16, 17, 18, 19, 20], [21, 22, 23, 24, 25]];
+let matrix = [[ 1,  2,  3,  4, 5], [12, 13, 14, 15, 6], [11, 10,  9,  8, 7]];
 function rotate(arr) {
     let tempArr = [];
     arr.forEach(arrEl => {
@@ -115,7 +115,7 @@ function rotate(arr) {
                 tempArr.unshift([el]);
             } else if (arrEl.indexOf(el) == 0){
                tempArr[tempArr.length -1].push(el);
-            } else if (arrEl.indexOf(el) == tempArr.length -1){
+            } else if (arrEl.indexOf(el) == tempArr.length - 1){
                  tempArr[0].push(el);
             } else if (arrEl.indexOf(el) == arrEl.length - 2){
                  tempArr[1].push(el);
@@ -140,7 +140,7 @@ function snail(arr, n) {
     return unpackedMatrix;
 }
 
-console.log(snail(matrix, 8));
+//console.log(snail(matrix, 4)); // => [ 1, 2, 3, 4, 5, 6, 7, 8, 10, 9, 11, 12, 13, 14, 15 ]
 
 // task 6
 let monday = [
