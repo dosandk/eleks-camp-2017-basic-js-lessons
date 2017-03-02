@@ -70,11 +70,27 @@
                 }
                 resArr.splice(index, 0, el);
                 return resArr;
+            },
+            swapWithPrevious: function swapWithPrevious(arr, index) {
+                var resArr = [];
+                var prevEl;
+                for (var i = 0; i < arr.length; i++) {
+                    if (index == 0) {
+                        resArr.push(arr[i]);
+                    } else if (i == index) {
+                        prevEl = arr[index - 1];
+                        resArr[index - 1] = arr[index];
+                        resArr[index] = prevEl;
+                    } else {
+                        resArr.push(arr[i]);
+                    }
+                }
+                return resArr;
             }
         };
-        var arr1 = [1, 2, 3, 4];
-        alert(ImmutableArray.myInsert(arr1, 7, 1));
-        alert(arr1);
+        //var arr1 = [1, 2, 3, 4];
+        //alert(ImmutableArray.swapWithPrevious(arr1, 1));
+        //alert(arr1);
     </script>
 </body>
 
