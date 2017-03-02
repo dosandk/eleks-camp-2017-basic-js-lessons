@@ -47,7 +47,7 @@ function wordsCounter(str) {
 
 	for(var i = 0; i < split.length; i++) {
 		if(split[i] == ' ' && split[i+1] == ' '){
-			split[i] = '#';
+			split[i] = '';
 		}
 	}
 
@@ -114,9 +114,15 @@ function dragonCurve(iteration) {
     var right = '1';
     var result = '';
     
+    function retrograde(arr){
+		return arr.split('').reverse().map(el=>+!(parseInt(el))).join('');
+	}
+	
     for(var i = 0; i < iteration; i++) {
-    	result = result + right + result.split('').reverse().map(el=>+!(parseInt(el))).join(''); 
+    	result = result + right + retrograde(result); 
     }
 
     console.log(result);
 }
+
+dragonCurve(4);
