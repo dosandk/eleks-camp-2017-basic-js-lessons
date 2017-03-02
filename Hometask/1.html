@@ -49,11 +49,23 @@
                     }
                 }
                 return resArr;
+            },
+            //remove
+            myRemove: function myRemove(arr, index) {
+                var resArr = [];
+                for (var i = 0; i < arr.length; i++) {
+                    if (i == index) {
+                        continue;
+                    } else {
+                        resArr[i] = arr[i]
+                    }
+                }
+                return resArr;
             }
         };
-        //var arr1 = [1, 2, 3, 4];
-        //alert(ImmutableArray.myUnshift(arr1, 5));
-        //alert(arr1);
+        // var arr1 = [1, 2, 3, 4];
+        // alert(ImmutableArray.myRemove(arr1, 1));
+        // alert(arr1);
     </script>
 </body>
 
