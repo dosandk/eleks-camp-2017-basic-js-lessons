@@ -104,24 +104,25 @@ function toEvenOddString(arr) {
 //console.log(toEvenOddString([1, 3, 2, 8, 13, 7, 4]));
 
 // task 5, snail
-let matrix = [[ 1,  2,  3,  4, 5], [12, 13, 14, 15, 6], [11, 10,  9,  8, 7]];
+let matrix = [
+                [ 1,  2,  3,  4, 5],
+                [12, 13, 14, 15, 6],
+                [11, 10,  9,  8, 7]
+            ];
+
 function rotate(arr) {
     let tempArr = [];
     arr.forEach(arrEl => {
         arrEl.forEach(el => {
+            // calculate new row, to push elems
+            let newRow = ((arrEl.length - 1) - arrEl.indexOf(el));
             if(tempArr.length -1 < arrEl.indexOf(el)){
                 /* if array with element index is not found in tempArr,
                 unshift array with element to tempArr.*/
                 tempArr.unshift([el]);
-            } else if (arrEl.indexOf(el) == 0){
-               tempArr[tempArr.length -1].push(el);
-            } else if (arrEl.indexOf(el) == tempArr.length - 1){
-                 tempArr[0].push(el);
-            } else if (arrEl.indexOf(el) == arrEl.length - 2){
-                 tempArr[1].push(el);
-            }
-             else {
-                tempArr[arrEl.indexOf(el) + 1].push(el);
+                
+            } else {
+                tempArr[newRow].push(el);
             }
         });
     });
@@ -140,8 +141,8 @@ function snail(arr, n) {
     return unpackedMatrix;
 }
 
-//console.log(snail(matrix, 4)); // => [ 1, 2, 3, 4, 5, 6, 7, 8, 10, 9, 11, 12, 13, 14, 15 ]
-
+console.log(snail(matrix, 4)); // => [ 1, 2, 3, 4, 5, 6, 7, 8, 10, 9, 11, 12, 13, 14, 15 ]
+//console.log(rotate(matrix));
 // task 6
 let monday = [
     {
