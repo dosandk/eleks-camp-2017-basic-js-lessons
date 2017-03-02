@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+      function dragon(n){
+        var res = '1';
+        var r = 0;  
+            
+        function mirror(){
+            var b = [];
+            for(var i = 0; i < res.length; i++){
+                b += Math.abs(res[i] - 1);
+            }
+            return b.split('').reverse().join('');
+        }
+        for(i = 1; i < n; i++){
+            res += 1 + mirror(res);
+        }
+        return res;
+      }
+      console.log(dragon(4));
+    </script>
+</body>
+</html>
