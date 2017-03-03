@@ -90,6 +90,7 @@ function vowelCount(str) {
 function toEvenOddString(arr) {
     let even = [],
         odd = [];
+
     arr.forEach(el => {
         if((el % 2) == 0){
             even.push(el);
@@ -141,8 +142,9 @@ function snail(arr, n) {
     return unpackedMatrix;
 }
 
-console.log(snail(matrix, 4)); // => [ 1, 2, 3, 4, 5, 6, 7, 8, 10, 9, 11, 12, 13, 14, 15 ]
+console.log(snail(matrix, 4)); // => [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 ]
 //console.log(rotate(matrix));
+
 // task 6
 let monday = [
     {
