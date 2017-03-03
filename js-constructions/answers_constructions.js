@@ -128,4 +128,56 @@ var two = [3, 5, 9, 10, 12];
 
     console.log(toEvenOddString(str));
 
+    console.log('===============================');
+//6
+    let monday = [
+        {
+            'name'  : 'Write a tutorial',
+            'duration' : 180
+        },
+        {
+            'name'  : 'Some web development',
+            'duration' : 120
+        }
+    ];
+
+    let tuesday = [
+        {
+            'name'  : 'Keep writing that tutorial',
+            'duration' : 240
+        },
+        {
+            'name'  : 'Some more web development',
+            'duration' : 180
+        },
+        {
+            'name'  : 'A whole lot of nothing',
+            'duration'  : 240
+        }
+    ];
+
+    let tasks = [...monday, ...tuesday];
+
+    function makeOneSum(arr) {
+        var inHours = arr.map(function(item) {
+            return item.duration / 60;
+        });
+        
+        var filtered = inHours.filter(function(item) {
+            return item > 2;
+        });
+
+        var inDollars = filtered.map(function(item) {
+            return item * 15;
+        });
+
+        var oneSum =  inDollars.reduce(function(p, n) {
+            return p + n;
+        });
+
+        return '$' + oneSum;
+    }
+
+    console.log(makeOneSum(tasks));
+
 })();
