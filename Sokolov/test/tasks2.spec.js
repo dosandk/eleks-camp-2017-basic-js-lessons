@@ -99,4 +99,104 @@ describe('arrays: ', () => {
                                     12, 13, 14, 15]);
     });
   });
+
+  describe('task06: ', () => {
+
+    it('should combine all tasks in 1d-array', () => {
+      let monday = [
+        { name: 'Write a tutorial', duration: 180 },
+        { name: 'Some web development', duration: 120 }
+      ];
+      let tuesday = [
+        { name: 'Keep writing that tutorial', duration: 240 },
+        { name: 'Some more web development', duration: 180 },
+        { name: 'A whole lot of nothing', duration: 240 }
+      ];
+      let tasks = [monday, tuesday];
+      expect(a.getTasksOnly(tasks)).toEqual([
+        { name: 'Write a tutorial', duration: 180 },
+        { name: 'Some web development', duration: 120 },
+        { name: 'Keep writing that tutorial', duration: 240 },
+        { name: 'Some more web development', duration: 180 },
+        { name: 'A whole lot of nothing', duration: 240 }
+      ]);
+    });
+
+    it('should convert minutes to hours', () => {
+      let tasks = [
+        { name: 'Write a tutorial', duration: 180 },
+        { name: 'Some web development', duration: 120 },
+        { name: 'Keep writing that tutorial', duration: 240 },
+        { name: 'Some more web development', duration: 180 },
+        { name: 'A whole lot of nothing', duration: 240 }
+      ];
+      expect(a.convertToHours(tasks)).toEqual([
+        { name: 'Write a tutorial', duration: 3 },
+        { name: 'Some web development', duration: 2 },
+        { name: 'Keep writing that tutorial', duration: 4 },
+        { name: 'Some more web development', duration: 3 },
+        { name: 'A whole lot of nothing', duration: 4 }
+      ]);
+    });
+
+    it('should return tasks with duration greater than 2 hours', () =>{
+      let tasks = [
+        { name: 'Write a tutorial', duration: 3 },
+        { name: 'Some web development', duration: 2 },
+        { name: 'Keep writing that tutorial', duration: 4 },
+        { name: 'Some more web development', duration: 3 },
+        { name: 'A whole lot of nothing', duration: 4 }
+      ];
+      expect(a.filterGreaterThan(tasks, 2)).toEqual([
+        { name: 'Write a tutorial', duration: 3 },
+        { name: 'Keep writing that tutorial', duration: 4 },
+        { name: 'Some more web development', duration: 3 },
+        { name: 'A whole lot of nothing', duration: 4 }
+      ]);
+    });
+
+    it('should convert hours to money', () => {
+      let tasks = [
+        { name: 'Write a tutorial', duration: 3 },
+        { name: 'Keep writing that tutorial', duration: 4 },
+        { name: 'Some more web development', duration: 3 },
+        { name: 'A whole lot of nothing', duration: 4 }
+      ];
+      expect(a.convertHoursToMoney(tasks, 15)).toEqual([
+        { name: 'Write a tutorial', duration: 45 },
+        { name: 'Keep writing that tutorial', duration: 60 },
+        { name: 'Some more web development', duration: 45 },
+        { name: 'A whole lot of nothing', duration: 60 }
+      ]);
+    });
+
+    it('should add all time', () => {
+      let tasks = [
+        { name: 'Write a tutorial', duration: 45 },
+        { name: 'Keep writing that tutorial', duration: 60 },
+        { name: 'Some more web development', duration: 45 },
+        { name: 'A whole lot of nothing', duration: 60 }
+      ];
+      expect(a.sumHours(tasks)).toBe(210);
+    });
+
+    it('should return $<amount>', () => {
+      expect(a.stringifyAmount(210)).toBe('$210');
+    });
+
+    it('should return $<amount> with origin tasks', () => {
+      let monday = [
+        { name: 'Write a tutorial', duration: 180 },
+        { name: 'Some web development', duration: 120 }
+      ];
+      let tuesday = [
+        { name: 'Keep writing that tutorial', duration: 240 },
+        { name: 'Some more web development', duration: 180 },
+        { name: 'A whole lot of nothing', duration: 240 }
+      ];
+      let tasks = [monday, tuesday];
+      expect(a.getAmountForTasks(tasks, 2, 15)).toBe('$210');
+      expect(a.getAmountForTasks([[]], 2, 15)).toBe('$0');
+    });
+  });
 });

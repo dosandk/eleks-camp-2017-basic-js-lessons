@@ -119,6 +119,39 @@ var arrModule = (function() {
         arr = this.rotate2dArray(arr);
       }
       return result;
+    },
+
+    getTasksOnly(tasks) {
+      return tasks.reduce((x, y) => x.concat(y));
+    },
+
+    convertToHours(tasks) {
+      return tasks.map((x) => { x.duration /= 60; return x; });
+    },
+
+    filterGreaterThan(tasks, threshold) {
+      return tasks.filter((x) => x.duration > threshold);
+    },
+
+    convertHoursToMoney(tasks, rate) {
+      return tasks.map((x) => { x.duration *= rate; return x; });
+    },
+
+    sumHours(tasks) {
+      return tasks.reduce((x, y) => x + y.duration, 0);
+    },
+
+    stringifyAmount(amount) {
+      return "$" + amount;
+    },
+
+    getAmountForTasks(tasks, gtHours, rate) {
+      return "$" + tasks
+        .reduce((x, y) => x.concat(y))
+        .map((x) => { x.duration /= 60; return x; })
+        .filter((x) => x.duration > gtHours)
+        .map((x) => { x.duration *= rate; return x; })
+        .reduce((x, y) => x + y.duration, 0);
     }
   };
   return obj;
