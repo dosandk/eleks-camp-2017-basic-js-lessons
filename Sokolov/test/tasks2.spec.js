@@ -77,7 +77,8 @@ describe('arrays: ', () => {
     it('should sort even and odd numbers', () => {
       expect(a.toEvenOddString([1, 3, 2, 8, 13, 7, 4]))
         .toEqual('24813731');
-      expect(a.toEvenOddStringUsingNot([1, 3, 2, 8, 13, 7, 4]))
+      expect(a.toEvenOddStringUsingHigherOrderFunctions(
+        [1, 3, 2, 8, 13, 7, 4]))
         .toEqual('24813731');
     });
   });

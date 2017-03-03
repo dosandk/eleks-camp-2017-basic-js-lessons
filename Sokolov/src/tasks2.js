@@ -24,10 +24,7 @@ var arrModule = (function() {
     },
 
     shift(arr) {
-      if (arr.length <= 0)
-        return arr;
-      var res = arr.slice(1);
-      return res;
+      return (arr.length <= 0) ? arr : arr.slice(1);
     },
 
     unshift(arr, ...el) {
@@ -56,8 +53,7 @@ var arrModule = (function() {
     },
 
     intersection(arr1, arr2) {
-      var res = arr1.slice();
-      return res
+      return arr1.slice()
         .filter((v) => {
           return arr1.includes(v) && arr2.includes(v);
         })
@@ -76,45 +72,51 @@ var arrModule = (function() {
       return even.concat(odd).join('');
     },
 
-    toEvenOddStringUsingNot(arr) {
+    toEvenOddStringUsingHigherOrderFunctions(arr) {
       var not = (f) => {
         return function() {
-          var result = f.apply(this, arguments);
-          return !result;
+          return !(f.apply(this, arguments));
+        };
+      };
+      var neg = (f) => {
+        return function() {
+          return -(f.apply(this, arguments));
         };
       };
       var even = (v) => v % 2 === 0;
-      return  arr.filter(even).sort((x, y) => x - y)
-        .concat(arr.filter(not(even)).sort((x, y) => y - x))
+      var ascending = (x, y) => x - y;
+      return  arr.filter(even).sort(ascending)
+        .concat(arr.filter(not(even)).sort(neg(ascending)))
         .join('');
     },
 
-    snail(arr) {
-      var rotate = (a) => {
-        if (typeof a === 'undefined'
-            || a.length === 0
-            || a[0].length === 0)
-          return [];
-        let res = [];
-        let n = a.length,
-            m = a[0].length;
-        // one line
-        if (n === 1) {
-          res.push(a[0].reverse());
-          return res;
-        }
-        // more lines
-        for (let i = 0; i < m; i++) {
-          res[i] = [];
-          for (let j = 0; j < n; j++)
-            res[i][j] = a[j][m - i - 1];
-        }
+    rotate2dArray(arr) {
+      if (typeof arr === 'undefined'
+          || arr.length === 0
+          || arr[0].length === 0)
+        return [];
+      let res = [],
+          n = arr.length,
+          m = arr[0].length;
+      // one line
+      if (n === 1) {
+        res.push(arr[0].reverse());
         return res;
-      };
+      }
+      // more lines
+      for (let i = 0; i < m; i++) {
+        res[i] = [];
+        for (let j = 0; j < n; j++)
+          res[i][j] = arr[j][m - i - 1];
+      }
+      return res;
+    },
+
+    snail(arr) {
       let result = [];
       while (arr.length > 0) {
         result = result.concat(arr.shift());
-        arr = rotate(arr);
+        arr = this.rotate2dArray(arr);
       }
       return result;
     }
