@@ -36,7 +36,8 @@ const ImmutableArray = {
   },
 
   swapWithNext(arr, index) {
-    return swapWithPrevious(arr, index + 1);
+    return this.swapWithPrevious(arr, index + 1);
+  }
 }
 
 function intersection(arr1, arr2) {
