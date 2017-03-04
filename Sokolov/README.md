@@ -167,20 +167,14 @@ function toEvenOddString(arr) {
   return even.concat(odd).join('');
 }
 
-function rotate2dArray(arr) {
-  if (typeof arr === 'undefined'
+function rotateMatrix(arr) {
+  if (arr === undefined
       || arr.length === 0
       || arr[0].length === 0)
     return [];
   let res = [],
       n = arr.length,
       m = arr[0].length;
-  // one line
-  if (n === 1) {
-    res.push(arr[0].reverse());
-    return res;
-  }
-  // more lines
   for (let i = 0; i < m; i++) {
     res[i] = [];
     for (let j = 0; j < n; j++)
@@ -193,7 +187,7 @@ function snail(arr) {
   let result = [];
   while (arr.length > 0) {
     result = result.concat(arr.shift());
-    arr = rotate2dArray(arr);
+    arr = rotateMatrix(arr);
   }
   return result;
 }

@@ -84,6 +84,27 @@ describe('arrays: ', () => {
   });
 
   describe('task05:', () => {
+    it('should rotate matrix', () => {
+      expect(a.rotateMatrix([[3]])).toEqual([[3]]);
+      expect(a.rotateMatrix([[1, 2, 3]])).toEqual([[3], [2], [1]]);
+      expect(a.rotateMatrix([
+        [1, 2],
+        [3, 4]
+      ])).toEqual([
+        [2, 4],
+        [1, 3]
+      ]);
+      expect(a.rotateMatrix([
+        [1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 9]
+      ])).toEqual([
+        [3, 6, 9],
+        [2, 5, 8],
+        [1, 4, 7]
+      ]);
+    });
+
     it('should return 1d array from 2d-arr', () => {
       expect(a.snail([[]])).toEqual([]);
       expect(a.snail([[1, 2, 3]])).toEqual([1, 2, 3]);
