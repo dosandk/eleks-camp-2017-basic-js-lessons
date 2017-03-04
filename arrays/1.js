@@ -33,15 +33,19 @@ let ImmutableArray = {
     swapWithPrevious:  function (arr, index) {
         let tempArr =this.copy(arr);
         let element = tempArr[index];
-        tempArr.splice(index, 1);
-        tempArr.splice(index-1, 0, element);
-        return tempArr;
+        if (0 < index <= arr.length) {
+            tempArr.splice(index, 1);
+            tempArr.splice(index-1, 0, element);
+            return tempArr;
+        }
     },
     swapWithNext:  function (arr, index) {
         let tempArr =this.copy(arr);
         let element = tempArr[index];
-        tempArr.splice(index, 1);
-        tempArr.splice(index+1, 0, element);
-        return tempArr;
+        if (0 <= index < arr.length) {
+            tempArr.splice(index, 1);
+            tempArr.splice(index+1, 0, element);
+            return tempArr;
+        }
     }
 };
