@@ -1,11 +1,12 @@
-Strings
+STRINGS
+
 1.
 function repeater(x,y) {
-let str = x;
+let str = x + ',';
 let res = str.repeat(y);
 return res;
 };
-repeater("hello",10);
+console.log(repeater("hello",10));
 
 2. 
 function ucFirst(str)
@@ -13,7 +14,7 @@ function ucFirst(str)
     let a = str[0].toUpperCase() + str.slice(1);
     return a;
 }
-ucFirst("ivan");
+console.log(ucFirst("name"));
 
 3.
 function truncate(str, maxlength) {
@@ -28,4 +29,77 @@ else {
 return s;
 }
 }
-truncate("long word",6);
+console.log(truncate("long word",6));
+
+4.
+function turnMeBaby(s) {    
+    let toArray = s.split(""); 
+    let reverseArray = toArray.reverse(); 
+    let result = reverseArray.join(""); 
+    return result; 
+} 
+console.log(turnMeBaby("gnirts desrever"));
+
+5.
+function count(s) {
+let split = s.split(" ");
+let nospace = split.filter(function(x) { return x != '' });
+let result = nospace.length;
+return result;
+}
+console.log(count("hello,      world, demo,    fun, word, space      end")); /*works with multiple spaces*/
+
+or
+
+function count(s) {
+let result = 0;
+for (i=0; i <= s.length; i++) {
+   if (s.charAt(i) == " ") {
+        result ++;
+    }
+}
+return result + 1;
+}
+console.log(count("hello, hello, world")); /*but doesn't work with multiple spaces*/
+
+NUMBERS
+
+1.
+function numToPower(x,y) {
+let result = Math.pow(x,y);
+return result;
+}
+console.log(numToPower(2,4));
+
+or
+
+function numToPower(x,y) {
+let result = x ** y;
+return result;
+}
+console.log(numToPower(2,4));
+
+2.
+3.
+4.
+function doubleNum(x) {
+let tempstring = x.toString();
+let half = tempstring.length / 2;
+let first = tempstring.substring(0,half);
+let second = tempstring.substring(half, tempstring.length);
+
+if (first === second) {return x}
+else {return x*2}
+
+}
+console.log(doubleNum(10));
+console.log(doubleNum(1010));
+
+
+
+
+
+
+
+ 
+
