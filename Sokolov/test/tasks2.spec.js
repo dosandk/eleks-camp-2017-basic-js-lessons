@@ -184,7 +184,7 @@ describe('arrays: ', () => {
       expect(a.stringifyAmount(210)).toBe('$210');
     });
 
-    it('should return $<amount> with origin tasks', () => {
+    it('should return $<amount> of origin tasks', () => {
       let monday = [
         { name: 'Write a tutorial', duration: 180 },
         { name: 'Some web development', duration: 120 }
@@ -195,8 +195,8 @@ describe('arrays: ', () => {
         { name: 'A whole lot of nothing', duration: 240 }
       ];
       let tasks = [monday, tuesday];
-      expect(a.getAmountForTasks(tasks, 2, 15)).toBe('$210');
-      expect(a.getAmountForTasks([[]], 2, 15)).toBe('$0');
+      expect(a.amount(tasks, 2, 15)).toBe('$210');
+      expect(a.amount([[]], 2, 15)).toBe('$0');
     });
   });
 });

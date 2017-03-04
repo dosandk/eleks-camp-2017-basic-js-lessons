@@ -68,15 +68,15 @@ var vsModule = (function() {
       return wordCounter;
     },
 
-    multiTable(startsWith=1, numLines=81) {
+    multiTable(start=1, numLines=81) {
       const maxFactor = 10;
       var lineCounter = 0,
           result = "";
-      if (startsWith < 1
-          || startsWith >= maxFactor
+      if (start < 1
+          || start >= maxFactor
           || numLines < 1)
         return result;
-      for (let i = startsWith; i < maxFactor; i++) {
+      for (let i = start; i < maxFactor; i++) {
         for (let j = 1; j < maxFactor; j++) {
           result += `${i} * ${j} = ${i * j};\n`;
           lineCounter++;
@@ -89,8 +89,8 @@ var vsModule = (function() {
       return result;
     },
 
-    printMultiTable(startsWith, numLines) {
-      var content = this.multiTable(startsWith, numLines);
+    printMultiTable(start=1, numLines=81) {
+      var content = this.multiTable(start, numLines);
       if (typeof global === 'object') {
         console.log(content);
       } else {

@@ -145,7 +145,7 @@ var arrModule = (function() {
       return "$" + amount;
     },
 
-    getAmountForTasks(tasks, gtHours, rate) {
+    amount(tasks, gtHours, rate) {
       return "$" + tasks
         .reduce((x, y) => x.concat(y))
         .map((x) => { x.duration /= 60; return x; })

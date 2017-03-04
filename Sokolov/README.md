@@ -1,3 +1,213 @@
+### Tasks 1
+#### Strings
+
+``` javascript
+function repeat(str, num) {
+  var r = "";
+  for (let i = 0; i < num; i++) {
+    r += str;
+  }
+  return r;
+}
+
+function ucFirst(s) {
+  s = s.trim();
+  if (s.length === 0)
+    return '';
+  return s[0].toUpperCase() + s.substr(1);
+}
+
+function truncate(str, maxlength) {
+  var result = str;
+  if (str.length > maxlength) {
+    result = str.substr(0, maxlength) + "...";
+  }
+  return result;
+}
+
+function turnMeBaby(str) {
+  return str.split('').reverse().join('');
+}
+
+function countWords(str) {
+  var wordCounter = 0;
+  var arr = str.match(/([^\s])+/g);
+  if (arr) {
+    wordCounter = arr.length;
+  }
+  return wordCounter;
+}
+```
+
+#### Numbers
+
+``` javascript
+function raiseToPower(num, power) {
+  var result = 1;
+  for (let i = 0; i < power; i++)
+    result *= num;
+  return result;
+}
+
+function multiTable(start=1, numLines=81) {
+  const maxFactor = 10;
+  var lineCounter = 0,
+      result = "";
+  if (start < 1
+      || start >= maxFactor
+      || numLines < 1)
+    return result;
+  for (let i = start; i < maxFactor; i++) {
+    for (let j = 1; j < maxFactor; j++) {
+      result += `${i} * ${j} = ${i * j};\n`;
+      lineCounter++;
+      if (lineCounter >= numLines) {
+        return result;
+      }
+    }
+    result += "\n==========\n\n";
+  }
+  return result;
+}
+
+function printMultiTable(start=1, numLines=81) {
+  var content = multiTable(start, numLines);
+  if (typeof global === 'object') {
+    console.log(content);
+  } else {
+    document.write('<div class="multi-table">');
+    document.write(content.replace(/\n/g, "<br />\n"));
+    document.write('</div>');
+  }
+}
+
+function doubleNum(num) {
+  var s = "" + num;
+  if (s.length % 2 === 0) {
+    var mid = s.length / 2;
+    if (s.substr(0, mid) == s.substr(mid)) {
+      return num;
+    }
+  }
+  return num * 2;
+}
+
+function dragonCurve(n) {
+  let result = [];
+  for (let i = 0; i < n; i++) {
+    result = result.concat(
+      1,
+      result.map((v) => (!v) ? 1 : 0).reverse()
+    );
+  }
+  return result.join('');
+}
+```
+
+### Tasks 2
+
+``` javascript
+function push(arr, ...el) {
+  return arr.concat(el);
+}
+
+function pop(arr) {
+  var res = arr.slice();
+  if (res.length > 0)
+    res.length--;
+  return res;
+}
+
+function shift(arr) {
+  return (arr.length <= 0) ? arr : arr.slice(1);
+}
+
+function unshift(arr, ...el) {
+  return [].concat(el, arr);
+}
+
+function remove(arr, index) {
+  if (index < 0 || index >= arr.length)
+    return arr;
+  var res = arr.slice();
+  res.splice(index, 1);
+  return res;
+}
+
+function swapWithPrevious(arr, index) {
+  if (index < 1 || index >= arr.length)
+    return arr;
+  var res = arr.slice();
+  res[index-1] = arr[index];
+  res[index] = arr[index-1];
+  return res;
+}
+
+function swapWithNext(arr, index) {
+  return swapWithPrevious(arr, index + 1);
+}
+
+function intersection(arr1, arr2) {
+  return arr1.slice()
+    .filter((v) => {
+      return arr1.includes(v) && arr2.includes(v);
+    })
+    .sort();
+}
+
+function vowelCount(str){
+  var mc = str.match(/([aeiouy])/gi);
+  return (mc) ? mc.length : 0;
+}
+
+function toEvenOddString(arr) {
+  var even, odd;
+  even = arr.filter((v) => v % 2 === 0).sort((x, y) => x - y);
+  odd = arr.filter((v) => v % 2 !== 0).sort((x, y) => y - x);
+  return even.concat(odd).join('');
+}
+
+function rotate2dArray(arr) {
+  if (typeof arr === 'undefined'
+      || arr.length === 0
+      || arr[0].length === 0)
+    return [];
+  let res = [],
+      n = arr.length,
+      m = arr[0].length;
+  // one line
+  if (n === 1) {
+    res.push(arr[0].reverse());
+    return res;
+  }
+  // more lines
+  for (let i = 0; i < m; i++) {
+    res[i] = [];
+    for (let j = 0; j < n; j++)
+      res[i][j] = arr[j][m - i - 1];
+  }
+  return res;
+}
+
+function snail(arr) {
+  let result = [];
+  while (arr.length > 0) {
+    result = result.concat(arr.shift());
+    arr = rotate2dArray(arr);
+  }
+  return result;
+}
+
+function amount(tasks, gtHours, rate) {
+  return "$" + tasks
+    .reduce((x, y) => x.concat(y))
+    .map((x) => { x.duration /= 60; return x; })
+    .filter((x) => x.duration > gtHours)
+    .map((x) => { x.duration *= rate; return x; })
+    .reduce((x, y) => x + y.duration, 0);
+}
+```
+
 #### Init & run
 
 ``` shell
