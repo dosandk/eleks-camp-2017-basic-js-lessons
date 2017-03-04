@@ -5,14 +5,18 @@ function repeater(x,y) {
 let str = x + ',';
 let res = str.repeat(y);
 return res;
-};
+}
 console.log(repeater("hello",10));
 
 2. 
-function ucFirst(str)
-{
-    let a = str[0].toUpperCase() + str.slice(1);
-    return a;
+function ucFirst(str) {
+	if (str == "") {
+  		return "";
+  	}
+  	else {
+    		let a = str[0].toUpperCase() + str.slice(1);
+    		return a;
+    	}
 }
 console.log(ucFirst("name"));
 
@@ -20,14 +24,14 @@ console.log(ucFirst("name"));
 function truncate(str, maxlength) {
 let s = str; 
 let len = maxlength;
-if (s.length > len) {
-let cutString = s.substring(0, len);
-let res = cutString + "...";
-return res;
-}
-else {
-return s;
-}
+	if (s.length > len) {
+		let cutString = s.substring(0, len);
+		let res = cutString + "...";
+		return res;
+	}
+	else {
+	return s;
+	}
 }
 console.log(truncate("long word",6));
 
