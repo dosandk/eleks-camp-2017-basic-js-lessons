@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+</head>
+
+<body>
+    <!-- Напишите функцию doubleNum, которая возвращает переданное ей число увеличенное вдвое, 
+если число не состоит из "двойников" - в таком случае функция просто возвращает исходное число. 
+"Двойники" - числа состоящие из двух одинаковых чисел, например 77, 22, 200200, 4343. -->
+
+    <script>
+        function func(a) {
+            var str = a.toString();
+            if ((str.length % 2) !== 0) {
+                var res = +str * 2;
+            } else {
+                var b = str.length / 2;
+                for (i = 0; i < str.length / 2; i++) {
+                    if (str[i] == str[b]) {
+                        b++;
+                        res = +str;
+                    } else {
+                        res = +str * 2;
+                    }
+                }
+            }
+            alert(res);
+        };
+        func(2324);
+    </script>
+</body>
+
+</html>
