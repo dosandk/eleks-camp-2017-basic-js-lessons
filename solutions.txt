@@ -80,7 +80,23 @@ return result;
 console.log(numToPower(2,4));
 
 2.
+for (var x = 1; x<= 10; x++) {
+for (var y = 1; y <= 10; y++) {
+console.log(x + ' * ' + y + ' = ' + x * y );
+}
+console.log('===========');
+}
+
 3.
+function multiTable(a,b) {
+for (var x = a; x<= a; x++) {
+for (var y = 1; y <= b; y++) {
+console.log(x + ' * ' + y + ' = ' + x * y );
+}
+}
+}
+multiTable(7,6);
+
 4.
 function doubleNum(x) {
 let tempstring = x.toString();
