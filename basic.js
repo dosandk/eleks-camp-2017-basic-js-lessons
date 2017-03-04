@@ -18,10 +18,10 @@ function ucFirst(str) {
 
 // 3
 function truncate(str, maxlength) {
-	if (str.length > maxlength) {
+    if (str.length > maxlength) {
         return (str.slice(0, maxlength) + '...');
     }
-	else {
+    else {
         return str;
     }	
 }
@@ -71,6 +71,6 @@ function multiplycate(num, count) {
 // 4
 function doubleNum(num) {
     var str = num.toString();
-    var piece = str.slice(str.length / 2);
-    return piece + piece == str ? num : num * 2;
+    var s = str.slice(str.length / 2);
+    return s + s == str ? num : num * 2;
 }
