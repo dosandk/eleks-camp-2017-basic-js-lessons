@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+</head>
+
+<body>
+    <!-- Написати функцію котра буде видавати кількість голосних літер
+
+латинського алфавіту в переданій стрічці vowelCount(`Hello WORLD!`) =
+
+3. Основна умова - використати RegExp. -->
+    <script>
+        var str = "Hello WORLD"
+        var result = "";
+        var count = 0;
+
+        function vowelCount(a) {
+
+            result = a.match(/[{aeiou}]/ig);
+
+            for (var i = 0; i < result.length; i++) {
+                count = count + 1;
+            }
+            return count;
+        }
+        alert(vowelCount(str));
+    </script>
+</body>
+
+</html>
