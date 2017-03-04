@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+</head>
+
+<body>
+    <!-- Маючи масив, що складається з додатніх чисел, створити стрічку,
+
+елементами якої будуть йти спочатку парні числа в зростаючому порядку,
+
+а за ними непарні числа в спадаючому порядку без пробілів. Наприклад:
+
+toEvenOddString([1, 3, 2, 8, 13, 7, 4]) =>; `24813731` (тому що [2, 4,
+
+8, 13, 7, 3, 1]) -->
+    <script>
+        var arr = [1, 2, 3, 2, 8, 13, 7, 5, 4];
+
+        function sortNumberUp(a, b) {
+            return a - b;
+        };
+
+        function sortNumberDown(a, b) {
+            return b - a;
+        };
+
+        function toEvenOddString(arr1) {
+            var resEven = [];
+            var resOdd = [];
+            for (var i = 0; i < arr1.length; i++) {
+                if (arr1[i] % 2 == 0) {
+                    resEven.push(arr1[i]);
+                    resEven.sort(sortNumberUp);
+                } else {
+                    resOdd.push(arr1[i]);
+                    resOdd.sort(sortNumberDown);
+                }
+            }
+            return resEven.join("") + resOdd.join("");
+
+        }
+        alert(toEvenOddString(arr));
+    </script>
+</body>
+
+</html>
