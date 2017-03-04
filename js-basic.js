@@ -13,14 +13,14 @@ function multipleStings(str, n) {
 //task-2
 function ucFirst(str) {
     if(typeof(str) == 'string' && typeof(str) !== 'undefined') {
-        var a = str.split('');
+        let letters = str.split('');
         letters[0] = letters[0].toUpperCase();
         return letters.join('');
     } else {
         return str;
     }
 }
-//console.log(ucFirst('lviv'));         
+console.log(ucFirst('lviv'));         
 
 
 //task-3
