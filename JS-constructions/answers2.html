@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<script>
+
+		//1.
+		{
+			let ImmutableArray = {
+				push (arr, el) {
+					resultArr = arr.slice();
+					resultArr.push(el);
+					return resultArr;
+				},
+
+				pop (arr) {
+					resultArr = arr.slice();
+					resultArr.pop();
+					return resultArr;
+				},
+
+				shift (arr) {
+					resultArr = arr.slice();
+					resultArr.shift();
+					return resultArr;
+				},
+
+				unshift (arr, el) {
+					resultArr = arr.slice();
+					resultArr.unshift(el);
+					return resultArr;
+				},
+
+				remove (arr, index) {
+					resultArr = arr.slice();
+					resultArr.splice(index, 1)
+					return resultArr;
+				},
+
+				insert (arr, el, index) {
+					resultArr = arr.slice();
+					resultArr.splice(index, 0, el);
+					return resultArr;
+				},
+
+				swapWithPrevious (arr, index) {
+					resultArr = arr.slice();
+
+					if (index > 0) {
+						resultArr.splice(index, 1, arr[index-1]);
+						resultArr.splice(index-1, 1, arr[index]);
+					}
+
+					return resultArr;
+				},
+
+				swapWithNext (arr, index) {
+					resultArr = arr.slice();
+
+					if (index < arr.length - 1) {
+						resultArr.splice(index, 1, arr[index+1]);
+						resultArr.splice(index+1, 1, arr[index]);
+					}
+
+					return resultArr;
+				}
+			}
+
+			let arr = [1, 2, 3, 4, 5]
+			console.log('Task 1. ImmutableArray object: ');
+			console.log('push: changed arr: ', ImmutableArray.push(arr, 6), 'original arr: ', arr);
+			console.log('pop: changed arr: ', ImmutableArray.pop(arr), 'original arr: ', arr);
+			console.log('shift: changed arr: ', ImmutableArray.shift(arr), 'original arr: ', arr);
+			console.log('unshift: changed arr: ', ImmutableArray.unshift(arr, 4), 'original arr: ', arr);
+
+			console.log('remove: changed arr: ', ImmutableArray.remove(arr, 1), 'original arr: ', arr);
+			console.log('insert: changed arr: ', ImmutableArray.insert(arr, 4, 3), 'original arr: ', arr);
+
+			console.log('swapWithPrevious: changed arr: ', ImmutableArray.swapWithPrevious(arr, 3), 'original arr: ', arr);
+			console.log('swapWithPrevious. index == 0: changed arr: ', ImmutableArray.swapWithPrevious(arr, 0), 'original arr: ', arr);
+
+			console.log('swapWithNext: changed arr: ', ImmutableArray.swapWithNext(arr, 1), 'original arr: ', arr);
+			console.log('swapWithNext. index == arr.length-1: changed arr: ', ImmutableArray.swapWithNext(arr, 4), 'original arr: ', arr);
+		}
+
+
+		// 2.
+		{
+			function intersection (arr1, arr2) {
+				let resArr = [];
+				for (let i = 0; i < arr1.length; i++){
+					for (let j = 0; j < arr2.length; j++){
+						if (arr1[i] == arr2[j] && 
+							!resArr.includes(arr1[i])){
+							resArr.push(arr1[i]);
+						}
+					}
+				}
+				return resArr;
+			}
+
+			let arr1 = [1, 3, 3, 2, 4];
+			let arr2 = [1, 3, 5, 4, 6];
+			console.log('Task 2. Intersection function: ');
+			console.log(intersection(arr1, arr2));
+		}
+
+		// 3.
+		{
+			function vowelCount (str) {
+				let counter = 0,
+				re = /[aeiouyAEIOUY]/;
+				for (let i = 0; i < str.length; i++){
+					if (str[i].match(re)){
+						counter += 1;
+					}
+				}
+				return counter;
+			}
+			console.log('Task 3. vowelCount function:')
+			console.log(vowelCount("Hello, my funny little world!"));
+		}
+
+
+		// 4.
+		{
+			function toEvenOddString (arr) {
+				let evenArr = arr.filter(i => {return i%2 == 0});
+				let oddArr = arr.filter(i => i%2);
+				evenArr.sort((a,b) => a-b);
+				oddArr.sort((a, b) => b-a);
+				let resStr = evenArr.join("") + oddArr.join("");
+				return resStr;
+			}
+
+			let arr = [1, 2, 3, 4, 7, 12, 10, 9];
+			console.log('Task 4. toOddEvenString function: ');
+			console.log(toEvenOddString(arr));
+		}
+
+		//6.
+		{
+			let monday = [
+		        {
+		            'name'  : 'Write a tutorial',
+		            'duration' : 180
+		        },
+		        {
+		            'name'  : 'Some web development',
+		            'duration' : 120
+		        }
+		    ];
+	 
+			let tuesday = [
+		        {
+		            'name'  : 'Keep writing that tutorial',
+		            'duration' : 240
+		        },
+		        {
+		            'name'  : 'Some more web development',
+		            'duration' : 180
+		        },
+		        {
+		            'name'  : 'A whole lot of nothing',
+		            'duration'  : 240
+		        }
+		    ];
+
+		    let tasks = [monday, tuesday];
+		    let rate = '15$';
+		    console.log('Complex task:')
+
+		    let justTasks = tasks.reduce((a, b) => a.concat(b));
+		    console.log('1: ', justTasks);
+
+		    let tasksInHours = justTasks.map(i => {i['duration'] = i['duration']/60; return i;});
+		    console.log('2: ', tasksInHours);
+
+		    let longTasks = tasksInHours.filter(i => i['duration'] > 2);
+		    console.log('3: ', longTasks);
+
+		    let tasksSalary = tasksInHours.map(i => i['duration'] * parseFloat(rate));
+		    console.log('4: ',tasksSalary);
+		    let wholeSalary = tasksSalary.reduce((a, b) => [+a + +b]);
+		    console.log('5: ', wholeSalary);
+		    let amount = wholeSalary.map(i => '$'+ i);
+		    console.log('6: ', amount);  
+		}
+
+	</script>
+	
+</body>
+</html>
