@@ -89,4 +89,13 @@ describe("basic-js tasks:", () => {
       expect(vs.doubleNum(111111)).toBe(111111);
     });
   });
+  describe('dragonCurve(n)', () => {
+    it('should bend the dragon curve n times', () => {
+      expect(vs.dragonCurve(1)).toBe('1');
+      expect(vs.dragonCurve(2)).toBe('110');
+      expect(vs.dragonCurve(3)).toBe('1101100');
+      expect(vs.dragonCurve(4)).toBe('110110011100100');
+      expect(vs.dragonCurve(5)).toBe('1101100111001001110110001100100');
+    });
+  });
 });

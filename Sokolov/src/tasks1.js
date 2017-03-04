@@ -1,6 +1,6 @@
 var vsModule = (function() {
   'use strict';
-  var obj = {
+  return {
     repeat(str, num) {
       var r = "";
       for (let i = 0; i < num; i++) {
@@ -109,14 +109,17 @@ var vsModule = (function() {
         }
       }
       return num * 2;
+    },
+
+    dragonCurve(n) {
+      let result = [];
+      for (let i = 0; i < n; i++) {
+        result = result.concat(1,
+          result.map((v) => (!v) ? 1 : 0).reverse()
+        );
+      }
+      return result.join('');
     }
 
   };
-  return obj;
 })();
-
-// console.log(repeat("hello", 3));
-// console.log(turnMeBaby("hello"));
-// console.log(ucFirst("hello"));
-// console.log(power(5, 3));
-vsModule.printMultiTable(5, 10);

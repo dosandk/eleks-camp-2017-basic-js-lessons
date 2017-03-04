@@ -1,5 +1,5 @@
 var arrModule = (function() {
-  var obj = {
+  return {
     push(arr, ...el) {
       return arr.concat(el);
     },
@@ -154,5 +154,4 @@ var arrModule = (function() {
         .reduce((x, y) => x + y.duration, 0);
     }
   };
-  return obj;
 })();
