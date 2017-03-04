@@ -9,7 +9,7 @@ function nth(arr, i) {
   return i >= 0 ? arr[i] : arr[arr.length + i];
 }
 
-// arr should be two dimensinal array
+// arr should be two dimensional array
 function rotate(arr) {
   let res = [];
   for (let i = 0; i < arr[0].length; i++) {
