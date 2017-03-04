@@ -25,23 +25,23 @@ ucFirst("") == ""; // нет ошибок при пустой строке -->
 
         ucFirst("dfsgdfgsf");
         // end only only for first element
-        function ucFirst2(a) {
+        function ucFirst2(a, b) {
             if (a == "") {
                 alert("");
             } else {
                 var res = "";
                 for (var i = 0; i < a.length; i++) {
-                    if (i == 0) {
-                        res = a[i].toUpperCase();
-                    } else {
+                    if (i !== b) {
                         res = res + a[i];
+                    } else if (i == b) {
+                        res = res + a[i].toUpperCase();
                     }
                 }
             }
             alert(res);
         }
 
-        ucFirst2("dklklk");
+        ucFirst2("dklklk", 2);
     </script>
 </body>
 
