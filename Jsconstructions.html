@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //1
+        var ImmutableArray = {
+				push (arr, el) {
+					res = arr.slice();
+					res.push(el);
+					return res;
+				},
+				pop (arr) {
+					res = arr.slice();
+					res.pop();
+					return res;
+				},
+				shift (arr) {
+					res = arr.slice();
+					res.shift();
+					return res;
+				},
+				unshift (arr, el) {
+					res = arr.slice();
+					res.unshift(el);
+					return res;
+				},
+				remove (arr, index) {
+					res = arr.slice();
+					res.splice(index, 1)
+					return res;
+				},
+				insert (arr, el, index) {
+					res = arr.slice();
+					res.splice(index, 0, el);
+					return res;
+				},
+				swapWithPrevious (arr, index) {
+					res = arr.slice();
+                    res.splice(index, 1, arr[index-1]);
+                    res.splice(index-1, 1, arr[index]);
+					return res;
+				},
+				swapWithNext (arr, index) {
+					res = arr.slice();
+                    res.splice(index, 1, arr[index+1]);
+                    res.splice(index+1, 1, arr[index]);
+					return res;
+				}
+			}
+			var arr = [1,2,3,4,5,6,7,8,9];
+	//		console.log(ImmutableArray.push(arr, 3));
+    //        console.log(ImmutableArray.pop(arr));
+    //        console.log(ImmutableArray.shift(arr));
+    //        console.log(ImmutableArray.unshift(arr, 3));
+   //         console.log(ImmutableArray.remove(arr, 3));
+   //         console.log(ImmutableArray.insert(arr, 3, 3));
+   //         console.log(ImmutableArray.swapWithPrevious(arr, 3));
+   //         console.log(ImmutableArray.swapWithNext(arr, 3));
+			
+  
+    //2   
+        function intersection(arr1, arr2){
+            var res = [];
+            for(var i = 0; i < arr1.length; i++){
+                if(arr2.includes(arr1[i])){
+                    res += arr1[i];
+                }        
+            }
+            return res;
+        }    
+       // console.log(intersection([1,2,10,3,4,7,1,1,8,9], [1,4,5,10,6,9,1,1]));
+    
+    
+    //3
+        function vowelCount(str){
+            var vowel = /[aoueiy]/g;
+            var n = 0;
+            for(var i = 0; i < str.length; i++){
+                if(str[i].toLowerCase().match(vowel)){
+                    n += 1;
+                }
+            }
+            return n;
+        }   
+       // console.log(vowelCount("Lorem ipsum dolor sit amet"));
+
+    //4
+       function toEvenOddString(arr){
+        var even = [], odd = [], res = "";
+            for(var i = 0; i < arr.length; i++){
+                if(arr[i] % 2 == 0){
+                    even.push(arr[i]);
+                }
+                else odd.push(arr[i]);
+            }
+            res = even.sort(function (a,b){return a-b}).join('') + odd.sort(function (a,b){return a-b}).reverse().join('');
+            return res;
+        }   
+     //   console.log(toEvenOddString([1,2,3,4,5,6,7,8,9,10,100,123]));
+
+
+     //5
+      var arr = [
+                    [1,2,3,4],
+                    [5,6,7,8],
+                    [9,10,11,12],
+                    [13,14,15,16],
+                    [17,18,19,20]
+                ];
+     function snail(arr){
+        var b = [];
+        function transform(a){
+            var res = [];
+            for(var i = 0; i < a[0].length; i++){
+                res[i]=[];
+                for(var j = 0; j < a.length; j++){
+                res[i][j] = a[j][i];
+                }
+            }
+            return res.reverse();
+        }  
+        
+        while(arr.length != 1){
+            b.push(arr[0]);
+            arr.shift();
+            arr = transform(arr);
+        }
+        b.push(arr[0]);
+        return b;
+    }
+   // alert(snail(arr));
+
+   //6
+
+   let monday = [
+        {
+            'name'  : 'Write a tutorial',
+            'duration' : 180
+        },
+        {
+            'name'  : 'Some web development',
+            'duration' : 120
+        }
+    ];
+ 
+    let tuesday = [
+        {
+            'name'  : 'Keep writing that tutorial',
+            'duration' : 240
+        },
+        {
+            'name'  : 'Some more web development',
+            'duration' : 180
+        },
+        {
+            'name'  : 'A whole lot of nothing',
+            'duration'  : 240
+        }
+    ];
+    let tasks = [monday, tuesday];
+    var rate = 15;
+    var amount = 0;
+    //1.
+    tasks.reduce(function(monday, tuesday) {
+        return monday.concat(tuesday);
+    })
+
+    //2.
+   .map(el => {
+        el.duration = el.duration / 60; 
+        return el;
+        })
+
+    //3.
+    .filter(el => el.duration > 2)
+
+    //4.-6.
+    .map(el => {
+            el.duration = el.duration * rate; 
+            amount += el.duration;
+            return el;
+        });
+
+ //  console.log("$" + amount);
+
+    </script>
+</body>
+</html>
