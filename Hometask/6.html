@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+</head>
+
+<body>
+    <!-- Пререквізити
+
+Нехай дано два масиви об’єктів-тасок з іменами і тривалостями в хвилинах
+
+let monday i let tuesday;
+
+і масив, що складається з цих двох масивів
+
+let tasks = [monday, tuesday]; -->
+    <script>
+        let monday = [
+
+            {
+
+                'name': 'Write a tutorial',
+
+                'duration': 180
+
+            },
+
+            {
+
+                'name': 'Some web development',
+
+                'duration': 120
+
+            }
+
+        ];
+
+
+
+        let tuesday = [
+
+            {
+
+                'name': 'Keep writing that tutorial',
+
+                'duration': 240
+
+            },
+
+            {
+
+                'name': 'Some more web development',
+
+                'duration': 180
+
+            },
+
+            {
+
+                'name': 'A whole lot of nothing',
+
+                'duration': 240
+            }
+
+        ];
+
+        let tasks = [monday, tuesday];
+        //Скомбінувати двох-вимірний масив в одно-вимірний масив усіх тасок за два дні
+        tasks = [...monday, ...tuesday];
+
+        //Перетворити попередній масив в масив, в якому тривалість тасок перетворена з хвилин в години
+
+        function hours(a) {
+            var resArr = [];
+            var obj = 0;
+            for (var i = 0; i < a.length; i++) {
+                obj = a[i];
+                for (key in a[i]) {
+                    if (key == 'duration') {
+                        resArr.push(obj.duration / 60);
+                    }
+                }
+            }
+            return resArr;
+        }
+        alert(hours(tasks));
+    </script>
+</body>
+
+</html>
