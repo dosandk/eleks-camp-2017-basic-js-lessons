@@ -8,7 +8,7 @@
 	<script>
 
 		// Task 1
-		var immutableArray = new ImmutableArray(), newArr;
+		/*var immutableArray = new ImmutableArray(), newArr;
 
 		function ImmutableArray(){}
 
@@ -77,9 +77,40 @@
 		newArr = immutableArray.swapWithPrevious([1, 2, 3], 1);
 		console.log(newArr);
 		newArr = immutableArray.swapWithNext([1, 2, 3], 1);
-		console.log(newArr);
+		console.log(newArr);*/
 		// End Task 1
 
+		// Task 2
+		/*var newArr = intersection([2, 1, 9, 3, 1, 5, 9], [1, 5, 9, 3, 5]);
+		console.log(newArr);
+
+		function intersection(arr1, arr2){
+			var i, j, k, z, sameEl=[];
+
+			// створення масиву однакових елементів між 2 масивами
+			for(i=0; i<arr1.length; i++){
+				for(j=0; j<arr2.length; j++){
+					// при знаходженні однакових елементів такий елемент додається в масив sameEl
+					if(arr1[i]===arr2[j]){
+						sameEl.push(arr1[i]);
+					}
+				}
+			}
+
+			console.log(sameEl);
+
+			// видалення з масиву sameEl однакові елементи
+			for(z=0; z<sameEl.length; z++){
+				for(k=1; k<sameEl.length; k++){
+					if(sameEl[z]===sameEl[k] && z!=k){
+						sameEl.splice(k, 1);
+					}
+				}
+			}	
+			
+			return sameEl;
+		}*/
+		// End Task 2
 		
 		
 	</script>
