@@ -70,33 +70,34 @@ let tasks = [monday, tuesday]; -->
         tasks = [...monday, ...tuesday];
 
         //Перетворити попередній масив в масив, в якому тривалість тасок перетворена з хвилин в години
-
-        tasks = tasks.map(function(i) {
-            for (key in i) {
-                if (key == 'duration') {
-                    return (i[key] = i[key] / 60);
-                }
-            }
+        let inHour = tasks.map(function(i) {
+            i['duration'] = i['duration'] / 60;
+            return i;
         });
+        //console.log(inHour);
 
         //Вибрати тільки ті таски, тривалість яких зайняла більше 2 годин
-        tasks = tasks.filter(function(i) {
-            for (key in i) {
-                if (key == 'duration') {
-                    return (i[key] > 2);
-                }
-            }
-        });
-        //Перемножити кожну тривалість тасок на оплачуваний рейт (15$ для прикладу)
-        tasks = tasks.map(function(i) {
-            for (key in i) {
-                if (key == 'duration') {
-                    return (i[key] = i[key] * 15);
-                }
-            }
+        let tasksFilter = inHour.filter(function(i) {
+            return i['duration'] > 2;
         });
 
-        alert(tasks);
+        //console.log(tasksFilter);
+
+        //Перемножити кожну тривалість тасок на оплачуваний рейт (15$ для прикладу)
+        let tasksRate = tasks.map(function(i) {
+            i['duration'] = i['duration'] * rate;
+            return i;
+        });
+        //console.log(tasksRate);
+
+        //Додати весь час
+        let tasksTime = inHour.reduce(function(sum, i) {
+            sum = sum + i;
+            return sum;
+        }, 0);
+        console.log(tasksTime);
+
+        // console.log(tasks);
     </script>
 </body>
 
