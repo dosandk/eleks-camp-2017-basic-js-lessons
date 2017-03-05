@@ -88,16 +88,20 @@ let tasks = [monday, tuesday]; -->
             i['duration'] = i['duration'] * rate;
             return i;
         });
-        //console.log(tasksRate);
+        // console.log(tasksRate);
 
         //Додати весь час
-        let tasksTime = inHour.reduce(function(sum, i) {
-            sum = sum + i;
+        let tasksTime = tasksRate.reduce(function(sum, i) {
+            sum = sum + i['duration'];
             return sum;
         }, 0);
-        console.log(tasksTime);
+        //console.log(tasksTime);
 
-        // console.log(tasks);
+        // Відформатувати отримане число у вигляді $<amount>;
+        let amount = tasksTime.map(function(i) {
+            return ("$" + i);
+        });
+        //console.log(amount);
     </script>
 </body>
 
