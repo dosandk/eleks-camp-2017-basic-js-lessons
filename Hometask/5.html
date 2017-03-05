@@ -1,0 +1,61 @@
+<html>
+
+<head>
+</head>
+
+<body>
+    <!-- (Задача з зірочкою :)) Написати функцію snail(arr), де arr - 2-вимірний
+
+масив, котра буде повертати одновимірний масив елементи якого взяті за
+
+годинниковою стрілкою по спіралі з масива arr. Наприклад:
+
+arr = [
+
+[ 1, 2, 3, 4, 5],
+
+[12, 13, 14, 15, 6],
+
+[11, 10, 9, 8, 7]
+
+];
+
+snail(arr) = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] -->
+    <script>
+        var arr = [
+
+            [1, 2, 3, 4, 5],
+
+            [12, 13, 14, 15, 6],
+
+            [11, 10, 9, 8, 7]
+
+        ];
+        var resArr2 = [];
+
+        function snail(arr1) {
+            var resArr = [];
+
+            for (var i = 0; i < arr1[0].length; i++) {
+                resArr.push([]);
+                resArr2.push(arr1[0][i]);
+            };
+            arr1.shift();
+
+            if (arr1.length !== 0) {
+                for (var i = 0; i < arr1[0].length; i++) {
+                    for (var j = 0; j < arr1.length; j++) {
+                        resArr[arr1[0].length - 1 - i].push(arr1[j][i]);
+                    }
+                }
+                return snail(resArr);
+            } else {
+                return resArr2;
+            }
+        }
+
+        console.log(snail(arr));
+    </script>
+</body>
+
+</html>
