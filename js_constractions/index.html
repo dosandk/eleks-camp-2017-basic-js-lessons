@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS Constractions</title>
+</head>
+<body>
+	<script>
+
+		// Task 1
+		var immutableArray = new ImmutableArray(), newArr;
+
+		function ImmutableArray(){}
+
+		// метод для добавляння елементів в кінець масиву
+		ImmutableArray.prototype.push = function(arr, el){
+			arr.push(el);
+			return arr;
+		}
+
+		// метод для видалення останнього елемента масиву
+		ImmutableArray.prototype.pop = function(arr){
+			arr.pop();
+			return arr;
+		}
+
+		// метод для видалення першого елемента масиву
+		ImmutableArray.prototype.shift = function(arr){
+			arr.shift();
+			return arr;
+		}
+
+		// метод для добавляння елементів на початок масиву
+		ImmutableArray.prototype.unshift = function(arr,el){
+			arr.unshift(el);
+			return arr;
+		}
+
+		// метод для видалення елемента з масиву по індексу
+		ImmutableArray.prototype.remove = function(arr,index){
+			arr.splice(index, 1);
+			return arr;
+		}
+
+		// метод для вставлення елемента в масиву по індексу
+		ImmutableArray.prototype.insert = function(arr, el,index){
+			arr.splice(index, 0, el);
+			return arr;
+		}
+
+		// метод для місця елемента з індексом index із елементом index-1
+		ImmutableArray.prototype.swapWithPrevious = function(arr,index){
+			var el = arr[index], elPrev = arr[index-1];
+			arr.splice(index-1, 2, el, elPrev);
+			return arr;
+		}
+
+		// метод для місця елемента з індексом index із елементом index+1
+		ImmutableArray.prototype.swapWithNext = function(arr,index){
+			var el = arr[index], elPrev = arr[index+1];
+			arr.splice(index, 2, elPrev, el);
+			return arr;
+		}
+
+		newArr = immutableArray.push([1, 2, 3], 9);
+		console.log(newArr);
+		newArr = immutableArray.pop([1, 2, 3]);
+		console.log(newArr);
+		newArr = immutableArray.shift([1, 2, 3]);
+		console.log(newArr);
+		newArr = immutableArray.unshift([1, 2, 3], 8);
+		console.log(newArr);
+		newArr = immutableArray.remove([1, 2, 3], 1);
+		console.log(newArr);
+		newArr = immutableArray.insert([1, 2, 3], 9, 1);
+		console.log(newArr);
+		newArr = immutableArray.swapWithPrevious([1, 2, 3], 1);
+		console.log(newArr);
+		newArr = immutableArray.swapWithNext([1, 2, 3], 1);
+		console.log(newArr);
+		// End Task 1
+
+		
+		
+	</script>
+</body>
+</html>
