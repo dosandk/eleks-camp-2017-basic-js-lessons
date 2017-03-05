@@ -65,24 +65,33 @@ let tasks = [monday, tuesday]; -->
         ];
 
         let tasks = [monday, tuesday];
+        let rate = 15;
         //Скомбінувати двох-вимірний масив в одно-вимірний масив усіх тасок за два дні
         tasks = [...monday, ...tuesday];
 
         //Перетворити попередній масив в масив, в якому тривалість тасок перетворена з хвилин в години
 
-        /*tasks = tasks.map(function(i) {
+        tasks = tasks.map(function(i) {
             for (key in i) {
                 if (key == 'duration') {
-                     return (i[key] = i[key] / 60);
+                    return (i[key] = i[key] / 60);
                 }
             }
-        });*/
+        });
 
         //Вибрати тільки ті таски, тривалість яких зайняла більше 2 годин
         tasks = tasks.filter(function(i) {
             for (key in i) {
                 if (key == 'duration') {
                     return (i[key] > 2);
+                }
+            }
+        });
+        //Перемножити кожну тривалість тасок на оплачуваний рейт (15$ для прикладу)
+        tasks = tasks.map(function(i) {
+            for (key in i) {
+                if (key == 'duration') {
+                    return (i[key] = i[key] * 15);
                 }
             }
         });
