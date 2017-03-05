@@ -70,20 +70,14 @@ let tasks = [monday, tuesday]; -->
 
         //Перетворити попередній масив в масив, в якому тривалість тасок перетворена з хвилин в години
 
-        function hours(a) {
-            var resArr = [];
-            var obj = 0;
-            for (var i = 0; i < a.length; i++) {
-                obj = a[i];
-                for (key in a[i]) {
-                    if (key == 'duration') {
-                        resArr.push(obj.duration / 60);
-                    }
+        tasks = tasks.map(function(i) {
+            for (key in i) {
+                if (key == 'duration') {
+                    return (i[key] = i[key] / 60);
                 }
             }
-            return resArr;
-        }
-        alert(hours(tasks));
+        });
+        alert(tasks);
     </script>
 </body>
 
