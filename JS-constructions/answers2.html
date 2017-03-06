@@ -143,6 +143,53 @@
 			console.log(toEvenOddString(arr));
 		}
 
+		//5. 
+		{
+			let snailyArr = [[1, 2, 3, 4], [1, 2, 3, 4], [1, 2, 3, 4]];
+			let snailyArr2 = [[10, 9, 8, 7], [10, 9, 8, 7], [10, 9, 8, 7], [10, 9, 8, 7]]
+
+			function snail(arr) {
+				let resArr = [];
+				let direction = 1;
+				let a;
+				while (true){
+					
+					if (direction == 1) {
+						a = arr[0].shift();
+						resArr.push(a);
+						if (arr[0].length == 0){
+							direction = 2;
+							arr.shift();
+						}
+
+					} else if (direction == 2) {
+						arr.forEach(i => {a = i.pop(); resArr.push(a);});
+						direction = 3;
+
+					} else if (direction == 3){
+						a = arr[arr.length-1].pop();
+						resArr.push(a);
+						if(arr[arr.length-1].length == 0){
+							direction = 4;
+							arr.pop();
+						}
+					
+					} else if (direction == 4){
+						for (let i = arr.length-1; i>=0; i--){
+							a = arr[i].shift();
+							resArr.push(a);
+						};
+						direction = 1;
+					}
+
+					if (arr.length == 0) break;
+				}
+				return resArr;
+			}
+			console.log('Task 5. function snail: ');
+			console.log('rectangle snail: ', snail(snailyArr));
+			console.log('square snail: ', snail(snailyArr2));
+		}
 		//6.
 		{
 			let monday = [
