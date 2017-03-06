@@ -71,5 +71,30 @@ function intersection(arr1, arr2) {
 
 // console.log(intersection([2, 1, 3, 1], [1, 3, 5]));
 
+
 // Task 3
-//will be added soon
+function vowelCount(str){
+	var count = 0;
+	str.split('').forEach(key => {
+		if (/[aeiou]/i.test(key))
+			count = count + 1;
+	});
+	return count;
+
+}
+
+// console.log(vowelCount('Hello World'));
+
+
+// Task 4
+function toEvenOddString(arr){
+	let arr1 = [],
+		arr2 = [];
+
+	arr.forEach(key => {if (key%2 === 0) arr2.push(key); else arr1.push(key)});
+	arr1.sort((a,b) => b-a);
+	arr2.sort((a,b) => a-b);
+	return arr2.concat(arr1).join('');
+}
+
+// console.log(toEvenOddString([1,3,2,8,13,7,4])); //returns '24813731' - where 13 is a single number (not 1 and 3)
