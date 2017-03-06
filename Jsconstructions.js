@@ -107,9 +107,10 @@ function snail(arr){
 	while (arr.length > 1){
 		for (var i = 0; i < arr.length - 1; i++) {
 		newArr = newArr.concat(arr[i].pop(arr[i.length-1]));
-		newArr = newArr.concat(arr.pop(arr[arr.length-1]).reverse());
 		}
+	newArr = newArr.concat(arr.pop(arr[arr.length-1]).reverse());
 	}
+
 	newArr = newArr.concat(arr[0]);
 
 	return newArr;
