@@ -1,0 +1,5 @@
+function toEvenOddString(arr){
+  return arr.sort((a,b)=>{ return a-b;}).filter((el)=>{return el%2==0;}).concat(arr.sort((a,b)=>{ return a-b;}).reverse().filter((el)=>{return el%2!=0;})).toString();
+}
+
+console.log(toEvenOddString([1,4,2,2,3,5,11]));

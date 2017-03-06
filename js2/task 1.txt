@@ -1,0 +1,97 @@
+var ImmutableArray = {
+  push: function(arr, el){
+    var temp=[];
+    for(var i = 0; i<arr.length; i++){
+      temp[i]=arr[i];
+    }
+    temp[i]=el;
+    return temp;
+  },
+  pop: function(arr){
+    var temp = [];
+    for(var i = 0; i<arr.length-1; i++){
+      temp[i]=arr[i];
+    }
+    return temp;
+  },
+  shift: function(arr){
+    var temp=[];
+    temp.length=arr.length-1;
+    for(var i =1;i<arr.length;i++){
+      temp[i-1]=arr[i];
+    }
+    return temp;
+  },
+  unshift: function(arr, el){
+    var temp = [];
+    temp[0]=el;
+    for(var i =0;i<arr.length;i++){
+      temp[i+1]=arr[i];
+    }
+    return temp;
+  },
+  swapWithNext: function(arr, index){
+    var temp = [];
+    for(var i = 0; i<arr.length; i++){
+      temp[i]=arr[i];
+    }
+    var tempEl = temp[index];
+    temp[index]=temp[index-1];
+    temp[index-1]=tempEl;
+    return temp;
+  },
+  swapWithPreveous: function(arr, index){
+    var temp = [];
+    for(var i = 0; i<arr.length; i++){
+      temp[i]=arr[i];
+    }
+    var tempEl = temp[index-2];
+    temp[index-2]=temp[index-1];
+    temp[index-1]=tempEl;
+    return temp;
+  }, 
+  insert: function(arr, el, index){
+    var temp = [];
+    temp.length = arr.length+1;
+
+    for(var i = 1; i<index; i++){
+      temp[i-1]=arr[i-1];
+    }
+    i++;
+    temp[index-1]=el;
+    console.log(i);
+    for(;i<=temp.length;i++){
+      temp[i-1]=arr[i-2];
+    }
+    return temp;
+  },
+  remove: function(arr, index){
+    var temp = [];
+    temp.length = arr.length - 1;
+    for(var i = 1; i<index; i++){
+      temp[i-1]=arr[i-1];
+    }
+
+    for(;i<=temp.length;i++){
+      temp[i-1]=arr[i];
+    }
+    return temp;
+  }
+}
+
+var array1 = [1,2,3,4,5];
+
+console.log(ImmutableArray.pop(array1));
+console.log(array1);
+console.log(ImmutableArray.push(array1,6));
+console.log(array1);
+console.log(ImmutableArray.shift(array1));
+console.log(array1);
+console.log(ImmutableArray.unshift(array1,11));
+console.log(array1);
+console.log(ImmutableArray.insert(array1,10,7));
+console.log(array1);
+console.log(ImmutableArray.swapWithPreveous(array1,6));
+console.log(array1);
+console.log(ImmutableArray.swapWithNext(array1,6));
+console.log(array1);

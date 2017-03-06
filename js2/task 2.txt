@@ -1,0 +1,9 @@
+function intersection(arr1, arr2){
+  return arr1.filter(e=> {
+    return arr2.indexOf(e) > -1;
+    }).filter((e, i, c) => { 
+        return c.indexOf(e) === i;
+    });
+}
+a=[1,2,3,4,2]; b = [3,12,22,3,2];
+console.log(intersection(a,b));

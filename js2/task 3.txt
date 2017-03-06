@@ -1,0 +1,6 @@
+function vovelCount(str){
+  var count = str.match(/[aeiou]/gi);
+  return count === null ? 0 : count.length;
+}
+
+console.log(vovelCount("adasd sa dq wqwsia"));
