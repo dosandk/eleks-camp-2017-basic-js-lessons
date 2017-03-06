@@ -30,6 +30,11 @@ describe('arrays: ', () => {
       expect(arr).toEqual([1, 2, 3]);
 
       expect(a.pop([])).toEqual([]);
+
+      expect(a.pop2(arr)).toEqual([1, 2]);
+      expect(arr).toEqual([1, 2, 3]);
+
+      expect(a.pop2([])).toEqual([]);
     });
 
     it('should remove first element from the array', () => {

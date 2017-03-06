@@ -1,7 +1,9 @@
 var vsModule = (function() {
   'use strict';
+  var util = utilModule;
   return {
     repeat(str, num) {
+      util.checkParamTypes(arguments, ['string', 'number']);
       var r = "";
       for (let i = 0; i < num; i++) {
         r += str;
@@ -10,10 +12,12 @@ var vsModule = (function() {
     },
 
     turnMeBaby(str) {
+      util.checkParamTypes(arguments, ['string']);
       return str.split('').reverse().join('');
     },
 
     ucFirst(s) {
+      util.checkParamTypes(arguments, ['string']);
       s = s.trim();
       if (s.length === 0)
         return '';
@@ -21,6 +25,7 @@ var vsModule = (function() {
     },
 
     ucFirstUsingArray(s) {
+      util.checkParamTypes(arguments, ['string']);
       if (s.length === 0)
         return '';
       var a = s.trim().split('');
@@ -29,6 +34,7 @@ var vsModule = (function() {
     },
 
     raiseToPower(num, power) {
+      util.checkParamTypes(arguments, ['number', 'number']);
       var result = 1;
       for (let i = 0; i < power; i++)
         result *= num;
@@ -36,6 +42,7 @@ var vsModule = (function() {
     },
 
     truncate(str, maxlength) {
+      util.checkParamTypes(arguments, ['string', 'number']);
       var result = str;
       if (str.length > maxlength) {
         result = str.substr(0, maxlength) + "...";
@@ -44,6 +51,7 @@ var vsModule = (function() {
     },
 
     countWords(str) {
+      util.checkParamTypes(arguments, ['string']);
       var wordCounter = 0,
           inWord = false;
       for (let i = 0; i < str.length; i++) {
@@ -60,6 +68,7 @@ var vsModule = (function() {
     },
 
     countWordsUsingRegexp(str) {
+      util.checkParamTypes(arguments, ['string']);
       var wordCounter = 0;
       var arr = str.match(/([^\s])+/g);
       if (arr) {
@@ -69,6 +78,7 @@ var vsModule = (function() {
     },
 
     multiTable(start=1, numLines=81) {
+      util.checkParamTypes([start, numLines], ['number', 'number']);
       const maxFactor = 10;
       var lineCounter = 0,
           result = "";
@@ -90,6 +100,7 @@ var vsModule = (function() {
     },
 
     printMultiTable(start=1, numLines=81) {
+      util.checkParamTypes([start, numLines], ['number', 'number']);
       var content = this.multiTable(start, numLines);
       if (typeof global === 'object') {
         console.log(content);
@@ -101,6 +112,7 @@ var vsModule = (function() {
     },
 
     doubleNum(num) {
+      util.checkParamTypes(arguments, ['number']);
       var s = "" + num;
       if (s.length % 2 === 0) {
         var mid = s.length / 2;
@@ -112,6 +124,7 @@ var vsModule = (function() {
     },
 
     dragonCurve(n) {
+      util.checkParamTypes(arguments, ['number']);
       let result = [];
       for (let i = 0; i < n; i++) {
         result = result.concat(1,

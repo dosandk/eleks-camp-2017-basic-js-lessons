@@ -1,37 +1,50 @@
 var arrModule = (function() {
+  var util = utilModule;
   return {
     push(arr, ...el) {
+      util.checkParamTypes(arguments, ['array']);
       return arr.concat(el);
     },
 
     push2(arr, el) {
+      util.checkParamTypes(arguments, ['array']);
       var res = arr.slice();
       res[res.length] = el;
       return res;
     },
 
     push3(arr, el) {
+      util.checkParamTypes(arguments, ['array']);
       var res = arr.slice();
       res.push(el);
       return res;
     },
 
     pop(arr) {
+      util.checkParamTypes(arguments, ['array']);
       var res = arr.slice();
       if (res.length > 0)
         res.length--;
       return res;
     },
 
+    pop2(arr) {
+      util.checkParamTypes(arguments, ['array']);
+      return arr.slice(0, -1);
+    },
+
     shift(arr) {
+      util.checkParamTypes(arguments, ['array']);
       return (arr.length <= 0) ? arr : arr.slice(1);
     },
 
     unshift(arr, ...el) {
+      util.checkParamTypes(arguments, ['array']);
       return [].concat(el, arr);
     },
 
     remove(arr, index) {
+      util.checkParamTypes(arguments, ['array', 'number']);
       if (index < 0 || index >= arr.length)
         return arr;
       var res = arr.slice();
@@ -40,6 +53,7 @@ var arrModule = (function() {
     },
 
     swapWithPrevious(arr, index) {
+      util.checkParamTypes(arguments, ['array', 'number']);
       if (index < 1 || index >= arr.length)
         return arr;
       var res = arr.slice();
@@ -53,6 +67,7 @@ var arrModule = (function() {
     },
 
     intersection(arr1, arr2) {
+      util.checkParamTypes(arguments, ['array', 'array']);
       return arr1.slice()
         .filter((v) => {
           return arr1.includes(v) && arr2.includes(v);
@@ -61,11 +76,13 @@ var arrModule = (function() {
     },
 
     vowelCount(str){
+      util.checkParamTypes(arguments, ['string']);
       var mc = str.match(/([aeiouy])/gi);
       return (mc) ? mc.length : 0;
     },
 
     toEvenOddString(arr) {
+      util.checkParamTypes(arguments, ['array']);
       var even, odd;
       even = arr.filter((v) => v % 2 === 0).sort((x, y) => x - y);
       odd = arr.filter((v) => v % 2 !== 0).sort((x, y) => y - x);
@@ -73,6 +90,7 @@ var arrModule = (function() {
     },
 
     toEvenOddStringUsingHigherOrderFunctions(arr) {
+      util.checkParamTypes(arguments, ['array']);
       var not = (f) => {
         return function() {
           return !(f.apply(this, arguments));
@@ -107,6 +125,7 @@ var arrModule = (function() {
     },
 
     snail(arr) {
+      util.checkParamTypes(arguments, ['array']);
       let result = [];
       while (arr.length > 0) {
         result = result.concat(arr.shift());
@@ -140,6 +159,7 @@ var arrModule = (function() {
     },
 
     amount(tasks, gtHours, rate) {
+      util.checkParamTypes(arguments, ['array', 'number', 'number']);
       return "$" + tasks
         .reduce((x, y) => x.concat(y))
         .map((x) => { x.duration /= 60; return x; })

@@ -2,6 +2,10 @@ describe("basic-js tasks:", () => {
   var vs = vsModule;
   describe("repeat(str)", () => {
     it("should repeat string n times", () => {
+      expect(() => vs.repeat([0, 1], 3))
+        .toThrowError("param0 must be of type string");
+      expect(() => vs.repeat('a', 'b'))
+        .toThrowError("param1 must be of type number");
       expect(vs.repeat('a', 5)).toBe('aaaaa');
       expect(vs.repeat('a', 0)).toBe('');
       expect(vs.repeat('hello', 2)).toBe('hellohello');
