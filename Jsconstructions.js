@@ -98,3 +98,21 @@ function toEvenOddString(arr){
 }
 
 // console.log(toEvenOddString([1,3,2,8,13,7,4])); //returns '24813731' - where 13 is a single number (not 1 and 3)
+
+
+// Task 5
+function snail(arr){
+	let newArr = arr.shift();
+
+	while (arr.length > 1){
+		for (var i = 0; i < arr.length - 1; i++) {
+		newArr = newArr.concat(arr[i].pop(arr[i.length-1]));
+		newArr = newArr.concat(arr.pop(arr[arr.length-1]).reverse());
+		}
+	}
+	newArr = newArr.concat(arr[0]);
+
+	return newArr;
+}
+
+// console.log ( snail ( [[1, 2, 3, 4, 5],[12, 13, 14, 15, 6],[11, 10, 9, 8, 7]] ) );
