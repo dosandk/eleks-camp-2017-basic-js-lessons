@@ -130,8 +130,9 @@ function rotate(arr) {
     return tempArr;
 }
 
-function snail(arr, n) {
-    let unpackedMatrix = [];
+function snail(arr) {
+    let unpackedMatrix = [],
+        n = arr[0].length - 1;
     for( i = 0; i <= n; i++) {
         arr[0].forEach(inner => {
             unpackedMatrix.push(inner);
@@ -142,7 +143,7 @@ function snail(arr, n) {
     return unpackedMatrix;
 }
 
-console.log(snail(matrix, 4)); // => [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 ]
+console.log(snail(matrix)); // => [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 ]
 //console.log(rotate(matrix));
 
 // task 6
