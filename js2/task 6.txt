@@ -1,0 +1,54 @@
+let monday = [
+        {
+            'name':   'Write a tutorial',
+            'duration':  180
+        },
+        {
+            'name':   'Some web development',
+            'duration':  120
+        }
+    ];
+ 
+let tuesday = [
+        {
+            'name':   'Keep writing that tutorial',
+            'duration':  240
+        },
+        {
+            'name':   'Some more web development',
+            'duration':  180
+        },
+        {
+            'name':   'A whole lot of nothing',
+            'duration':   240
+        }
+    ];
+
+let tasks = [monday, tuesday];
+tasks = tasks.reduce((list, day) => {
+  day.forEach( (task) => list.push(task));
+  return list;
+}, []);
+
+console.log(tasks);
+tasks = tasks.map((task)=> {
+    task.duration=task.duration/60;
+    return task;
+});
+console.log(tasks);
+tasks = tasks.filter((task)=> {
+    if(task.duration>2)
+    {
+        return task;
+    }
+});
+tasks = tasks.map((task)=> {
+    task.duration=task.duration*15;
+    return task;
+});
+let allTime = tasks.reduce((time, task)=>{
+    time+=task.duration;
+    return  time;
+},0) // для цього кроку використано не час, а гроші зароблені за час, не зрозумів що точно потрібно в завданні
+console.log(allTime);
+console.log(new Intl.NumberFormat('ua-Ua', { style: 'currency', currency: 'USD' }).format(allTime));
