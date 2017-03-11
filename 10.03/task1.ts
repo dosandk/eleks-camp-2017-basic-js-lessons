@@ -28,11 +28,10 @@ console.log(result1, result2, result3);
 
 // Exercise 6 - And a well-constructed object!
 interface man {
-    firstName: string,
-    age: number
-};
-
-let scientist = {
+    firstName: string;
+     experience: number;
+}
+const scientist: man = {
     firstName: "Will", 
     experience: 12
 };
