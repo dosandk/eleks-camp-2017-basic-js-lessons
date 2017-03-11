@@ -20,5 +20,19 @@ console.log(car.accelerate);
 car.accelerateM(5);
 console.log(car.accelerate); 
 
+// Exercise 2 - Two objects, based on each other ...
 
+class Base {
+    width: number;
+    length: number;
+        constructor(width: number, length: number){
+            this.width = width;
+            this.length = length;
+            }
+    calcSise(){
+        return this.width*this.length;
+    }
+}
 
+let rectangle1 = new Base(5,2);
+console.log(rectangle1.calcSise());

@@ -19,3 +19,16 @@ car.honk();
 console.log(car.accelerate);
 car.accelerateM(5);
 console.log(car.accelerate);
+// Exercise 2 - Two objects, based on each other ...
+var Base = (function () {
+    function Base(width, length) {
+        this.width = width;
+        this.length = length;
+    }
+    Base.prototype.calcSise = function () {
+        return this.width * this.length;
+    };
+    return Base;
+}());
+var rectangle1 = new Base(5, 2);
+console.log(rectangle1.calcSise());
