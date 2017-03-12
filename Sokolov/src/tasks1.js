@@ -54,7 +54,8 @@ var vsModule = (function() {
       util.checkParamTypes(arguments, ['string']);
       var wordCounter = 0,
           inWord = false;
-      for (let i = 0; i < str.length; i++) {
+      const N = str.length;
+      for (let i = 0; i < N; i++) {
         if (str[i] >= 'A' && str[i] <= 'z') {
           if (!inWord) {
             inWord = true;
@@ -105,9 +106,14 @@ var vsModule = (function() {
       if (typeof global === 'object') {
         console.log(content);
       } else {
-        document.write('<div class="multi-table">');
-        document.write(content.replace(/\n/g, "<br />\n"));
-        document.write('</div>');
+        var table = document.createElement("table");
+        table.className = "multi-table";
+        table.innerHTML = "<tr><td>"
+          + content
+            .replace(/\={2,}/g, '<hr />')
+            .replace(/\n+/g, "</td></tr>\n<tr><td>")
+          + "</td></tr>\n";
+        document.body.appendChild(table);
       }
     },
 
@@ -136,3 +142,4 @@ var vsModule = (function() {
 
   };
 })();
+vsModule.printMultiTable(5, 10);
