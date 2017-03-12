@@ -35,3 +35,91 @@ var scientist = {firstName: "Will", experience: 12};
 var {firstName, experience} = scientist;
 console.log(firstName, experience);
 console.assert(firstName === "Will" && experience === 12);
+
+// Exercise-002.js
+
+// Exercise 1 - How was your TypeScript Class?
+class Car {
+    acceleration: number = 0;
+
+    constructor(public name: string) {}
+
+    honk(): void {
+        console.log("Toooooooooot!");
+    }
+
+    accelerate(speed: number): void {
+        this.acceleration += speed;
+    }
+}
+var car = new Car("Lada");
+car.honk();
+console.log(car.acceleration);
+car.accelerate(10);
+console.log(car.acceleration);
+
+// Exercise 2 - Two objects, based on each other ...
+
+class BaseObject {
+    width: number = 0;
+    length: number = 0;
+}
+
+class Rectangle extends BaseObject {
+    constructor() {
+        super();
+    }
+
+    calcSize(): number {
+        return this.width * this.length;
+    }
+}
+
+var rectangle = new Rectangle();
+rectangle.width = 5;
+rectangle.length = 2;
+console.log("Rectangle:", rectangle.calcSize());
+
+// Exercise 3 - Make sure to compile to ES5 (set the target in tsconfig.json)
+
+class Person {
+    private _firstName: string = "";
+
+    @enumerable(true)
+    @configurable(true)
+    get firstName(): string {
+        return this._firstName;
+    }
+    set firstName(value: string) {
+        if (value.length > 3) {
+            this._firstName = value;
+        } else {
+            this._firstName = "";
+        }
+    }
+}
+
+function enumerable(bool: boolean) {
+    return function(target: any, propName: string,
+                    descriptor: PropertyDescriptor) {
+        descriptor.enumerable = bool;
+    };
+}
+
+function configurable(bool: boolean) {
+    return function(target: any, propName: string,
+                    descriptor: PropertyDescriptor) {
+        descriptor.configurable = bool;
+    }
+}
+
+var person = new Person();
+console.log(person.firstName);
+person.firstName = "Se";
+console.log(person.firstName);
+person.firstName = "Set your firstName";
+console.log(person.firstName);
+// var res = Object.getOwnPropertyDescriptor(
+//     Object.getPrototypeOf(person), 'firstName');
+// console.log(res);
+// person._firstName = "hello";

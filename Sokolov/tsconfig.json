@@ -4,6 +4,9 @@
         "target": "es5",
         "noImplicitAny": false,
         "sourceMap": false,
-        "strictNullChecks": true
-    }
+        "experimentalDecorators": true
+    },
+    "exclude": [
+        "node_modules"
+    ]
 }
