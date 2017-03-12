@@ -12,7 +12,12 @@ class MyMap<T> {
    }
 
    clear(){
-
+       for (let key in this) {
+           if (this.hasOwnProperty(key)) {
+               //let element = this[key];
+               delete this[key];  
+           }
+       }
    }
 
    printMap(){
@@ -33,5 +38,8 @@ console.log(map.getItem("banana"));
 let map2 = new MyMap<string>();
 map2.setItem("apples", "red");
 map2.setItem("grapes", "green");
-console.log(map2);
+map2.setItem("kiwi", "green");
+map2.printMap();
+map2.clear();
+map2.printMap();
 

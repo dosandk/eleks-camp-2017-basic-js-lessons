@@ -9,6 +9,12 @@ var MyMap = (function () {
         return this["" + key];
     };
     MyMap.prototype.clear = function () {
+        for (var key in this) {
+            if (this.hasOwnProperty(key)) {
+                //let element = this[key];
+                delete this[key];
+            }
+        }
     };
     MyMap.prototype.printMap = function () {
         for (var key in this) {
@@ -27,4 +33,7 @@ console.log(map.getItem("banana"));
 var map2 = new MyMap();
 map2.setItem("apples", "red");
 map2.setItem("grapes", "green");
-console.log(map2);
+map2.setItem("kiwi", "green");
+map2.printMap();
+map2.clear();
+map2.printMap();
