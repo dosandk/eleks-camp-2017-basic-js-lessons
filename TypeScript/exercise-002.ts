@@ -1,13 +1,12 @@
 // Exercise 1 - How was your TypeScript Class?
 class Car {
     name: string;
-    acceleration: number;
+    acceleration: number = 0;
     honk: any;
     accelerate: any;
 
     constructor(name: string) {
         this.name = name;
-        this.acceleration = 0;
 
         this.honk = (): void => console.log("Toooooooooot!");
 
@@ -21,37 +20,22 @@ console.log(car.acceleration);
 car.accelerate(10);
 console.log(car.acceleration);
 
-interface DoubleValueFunc {
-    (number1: number, number2: number): number;
-}
-
-const doubleFunc: DoubleValueFunc = function(
-    num1: number,
-    num2: number
-) {
-    return (num1 + num2) * 2;
-};
-
-console.log(doubleFunc(10, 20));
-
 // Exercise 2 - Two objects, based on each other ...
-type baseObj = {
-    width: number,
-    length: number,
-    [propName: string]: any
+class BaseObject {
+    public width;
+    public length;
+
+    constructor (width: number = 0, length: number = 0) {
+        this.width = width;
+        this.length = length;
+    }
 }
 
-let baseObject: baseObj = {
-    width: 0,
-    length: 0
-};
+class RectangleObj extends BaseObject {
+  public calcSize = (): number => this.width * this.length;
+}
 
-let rectangle: baseObj = Object.create(baseObject);
-rectangle.width = 5;
-rectangle.length = 2;
-rectangle.calcSize = function() {
-    return this.width * this.length;
-};
+let rectangle = new RectangleObj(5, 2);
 console.log(rectangle.calcSize());
 
 // Exercise 3 - Make sure to compile to ES5 (set the target in tsconfig.json)
