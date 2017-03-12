@@ -1,7 +1,7 @@
 class Car {
     constructor(name) {
-        this.name = name;
         this.acceleration = 0;
+        this.name = name;
         this.honk = () => console.log("Toooooooooot!");
         this.accelerate = (speed) => this.acceleration = this.acceleration + speed;
     }
@@ -11,20 +11,19 @@ car.honk();
 console.log(car.acceleration);
 car.accelerate(10);
 console.log(car.acceleration);
-const doubleFunc = function (num1, num2) {
-    return (num1 + num2) * 2;
-};
-console.log(doubleFunc(10, 20));
-let baseObject = {
-    width: 0,
-    length: 0
-};
-let rectangle = Object.create(baseObject);
-rectangle.width = 5;
-rectangle.length = 2;
-rectangle.calcSize = function () {
-    return this.width * this.length;
-};
+class BaseObject {
+    constructor(width = 0, length = 0) {
+        this.width = width;
+        this.length = length;
+    }
+}
+class RectangleObj extends BaseObject {
+    constructor() {
+        super(...arguments);
+        this.calcSize = () => this.width * this.length;
+    }
+}
+let rectangle = new RectangleObj(5, 2);
 console.log(rectangle.calcSize());
 class Person {
     constructor() {
