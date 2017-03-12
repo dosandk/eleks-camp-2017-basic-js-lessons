@@ -6,34 +6,44 @@
 // clear() // should remove all key-value pairs
 // printMap() // should output key-value pairs
 // The map should be usable like shown below:
-var MyMap = (function () {
-    function MyMap() {
+class MyMap<type> {
+    public map: object;
+
+    constructor () {
         this.map = {};
     }
-    MyMap.prototype.setItem = function (key, item) {
+
+    public setItem(key: string, item: type) {
         Object.defineProperty(this.map, key, {
             enumerable: true,
             writable: true,
             configurable: true,
             value: item
         });
-    };
-    MyMap.prototype.getItem = function (key) {
+
+    }
+
+    public getItem(key: string): any {
         return this.map[key];
-    };
-    MyMap.prototype.clear = function () {
+    }
+
+    public clear(): void {
         this.map = {};
-    };
-    MyMap.prototype.printMap = function () {
+    }
+
+    public printMap(): object {
         return this.map;
-    };
-    return MyMap;
-}());
-var numberMap = new MyMap();
+    }
+
+}
+
+const numberMap = new MyMap<number>();
 numberMap.setItem('apples', 5);
 numberMap.setItem('bananas', 10);
 console.log(numberMap.printMap());
-var stringMap = new MyMap();
+
+
+const stringMap = new MyMap<string>();
 stringMap.setItem('name', "Max");
 stringMap.setItem('age', "27");
 console.log(stringMap.printMap());
