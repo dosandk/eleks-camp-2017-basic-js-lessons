@@ -1,3 +1,26 @@
+
+
+<!-- toc -->
+
+- [Init & run](#init--run)
+- [Tasks 1](#tasks-1)
+  * [Strings](#strings)
+  * [Numbers](#numbers)
+- [Tasks 2](#tasks-2)
+- [TypeScript](#typescript)
+  * [Exercise-001](#exercise-001)
+
+<!-- tocstop -->
+
+### Init & run
+
+``` shell
+// install dependencies
+npm install -d
+// run tests
+npm test
+```
+
 ### Tasks 1
 #### Strings
 
@@ -202,17 +225,8 @@ function amount(tasks, gtHours, rate) {
 }
 ```
 
-#### Init & run
-
-``` shell
-// install dependencies
-npm install -d
-// run tests
-npm test
-```
-
-#### TypeScript
-##### Exercise-001
+### TypeScript
+#### Exercise-001
 ``` typescript
 // Exercise 1 - Maybe use an Arrow Function?
 var double = (value:number): number => value * 2;
