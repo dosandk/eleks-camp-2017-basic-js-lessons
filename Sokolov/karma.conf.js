@@ -4,13 +4,17 @@
 module.exports = function(config) {
   config.set({
     basePath: '',
-    frameworks: ['jasmine'],
+    frameworks: ['jasmine', 'karma-typescript'],
     files: [
+      'src/**/*.ts',
       'src/util.js',
       'src/**/*.js',
       'test/**/*.spec.js'
     ],
     port: 9876,
+    preprocessors: {
+      "**/*.ts": ["karma-typescript"]
+    },
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
@@ -19,7 +23,8 @@ module.exports = function(config) {
     concurrency: Infinity,
     plugins: [
       'karma-chrome-launcher',
-      'karma-jasmine'
+      'karma-jasmine',
+      'karma-typescript'
     ]
   });
 };
