@@ -30,5 +30,32 @@ var Base = (function () {
     };
     return Base;
 }());
-var rectangle1 = new Base(5, 2);
-console.log(rectangle1.calcSise());
+//
+var Person = (function () {
+    function Person() {
+        this._firstName = "";
+    }
+    Object.defineProperty(Person.prototype, "firstName", {
+        get: function () {
+            return this._firstName;
+        },
+        set: function (value) {
+            if (value.length > 3) {
+                this._firstName = value;
+            }
+            else {
+                this._firstName = "";
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
+    return Person;
+}());
+;
+var person = new Person();
+console.log(person.firstName);
+person.firstName = "Se";
+console.log(person.firstName);
+person.firstName = "Set your firstName";
+console.log(person.firstName);

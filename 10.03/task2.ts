@@ -21,7 +21,6 @@ car.accelerateM(5);
 console.log(car.accelerate); 
 
 // Exercise 2 - Two objects, based on each other ...
-
 class Base {
     width: number;
     length: number;
@@ -34,5 +33,26 @@ class Base {
     }
 }
 
-let rectangle1 = new Base(5,2);
-console.log(rectangle1.calcSise());
+//
+class Person {
+   private _firstName: string = "";
+    
+    set firstName(value: string) {
+        if (value.length > 3) {
+            this._firstName = value;
+        } else {
+            this._firstName = "";
+        }
+    }
+    
+    get firstName() {
+        return this._firstName;
+    }
+};
+
+let person = new Person();
+console.log(person.firstName);
+person.firstName = "Se";
+console.log(person.firstName);
+person.firstName = "Set your firstName";
+console.log(person.firstName);
