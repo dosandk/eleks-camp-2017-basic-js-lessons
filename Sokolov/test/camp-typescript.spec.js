@@ -4,7 +4,7 @@ describe('example1', () => {
     expect(double(4)).toBe(8);
   });
 
-  it('should print to console greeting', () => {
+  it('should print greeting to console', () => {
     spyOn(console, 'log');
     greet();
     expect(console.log).toHaveBeenCalledWith('Hello, Max');

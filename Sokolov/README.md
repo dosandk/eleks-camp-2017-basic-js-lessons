@@ -10,6 +10,7 @@
 - [TypeScript](#typescript)
   * [Exercise-001](#exercise-001)
   * [Exercise-002](#exercise-002)
+  * [Exercise-003](#exercise-003)
 
 <!-- tocstop -->
 
@@ -346,4 +347,50 @@ console.log(person.firstName);
 person.firstName = "Set your firstName";
 console.log(person.firstName);
 
+```
+
+#### Exercise-003
+
+``` typescript
+// Let's keep it simple and only add the following methods to the Map:
+//
+// setItem(key: string, item: T) // should create a new key-value pair
+//
+// getItem(key: string) // should retrieve the value of the provided key
+// clear() // should remove all key-value pairs
+// printMap() // should output key-value pairs
+// The map should be usable like shown below:
+
+class MyMap<T extends number | string> {
+
+    private _map: { [key: string]: T; } = {};
+
+    getItem(key: string): T {
+        return this._map[key];
+    }
+
+    setItem(key: string, value: T){
+        this._map[key] = value;
+    }
+
+    clear() {
+        this._map = {};
+    }
+
+    printMap(): void {
+        for (let k of Object.keys(this._map)) {
+            console.log(k, "=>", this._map[k]);
+        }
+    }
+}
+
+const numberMap = new MyMap<number>();
+numberMap.setItem('apples', 5);
+numberMap.setItem('bananas', 10);
+numberMap.printMap();
+
+const stringMap = new MyMap<string>();
+stringMap.setItem('name', "Max");
+stringMap.setItem('age', "27");
+stringMap.printMap();
 ```
