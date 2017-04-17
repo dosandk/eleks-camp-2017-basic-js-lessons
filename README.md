@@ -1,5 +1,5 @@
 ## TODO:
-Create test for tasks and add CI
+Create tests for tasks and add CI
 
 #### Strings
 
